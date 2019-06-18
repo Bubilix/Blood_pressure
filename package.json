@@ -1,0 +1,22 @@
+{
+  "name": "blood_pressure_app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bubilix/Blood-pressure.git"
+  },
+  "author": "Sven Gasparovic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bubilix/Blood-pressure/issues"
+  },
+  "homepage": "https://github.com/Bubilix/Blood-pressure#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

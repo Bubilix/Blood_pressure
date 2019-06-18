@@ -1,0 +1,205 @@
+/*imported font*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400,400i,700');
+/*general sytling*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  text-rendering: optimizeLegibility;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  background-color: #fff;
+  width: 100vw;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("https://www.zdravobudi.hr/media/kardiologija/zdravobudi_fb_1200x628_20161116_2_752x416.png");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+/*main title*/
+.header-title-box {
+    position: relative;
+    height: 14%;
+    width: 76%;
+    top: 30px;
+    left: 12%;
+    display: flex;
+}
+.logo {
+    flex: 1;
+    margin: 0;
+}
+.logo img {
+    height: 100%;
+}
+.main-title-text {
+    background-image: linear-gradient(rgba(229, 57, 53, 0.8), rgba(106, 27, 154, 0.8));
+    border-radius: 100px;
+    text-transform: uppercase;height: auto;
+    flex: 0 1 88%;
+    margin: 0;
+    line-height: 240%;
+}
+h1 {
+    font-size: 200%;
+    text-align: center;
+    display: inline;
+    color: #EEEEEE;
+}
+nav {
+  position: relative;
+  transition: top 1s;
+  text-align: center;
+}
+.nonactive-nav {
+  top: 200px;
+}
+.active-nav {
+  top: 80px;
+}
+/*navigation style*/
+.options-to-choose {
+  display: flex;
+  justify-content: space-evenly;
+}
+.options-to-choose a:link,
+.options-to-choose a:visited {
+  display: inline-block;
+  border-radius: 100px;
+  padding: 8px 15px;
+  border: 3px solid #512DA8;
+  background-image: linear-gradient(rgba(26, 35, 126, 0.3), rgba(106, 27, 154, 0.5));
+  color: #fff;
+  text-decoration: none;
+  font-size: 105%;
+  transition: color 0.2s, border 0.2s;
+}
+.options-to-choose a:hover,
+.options-to-choose a:active {
+  color: #ddd;
+  background-image: linear-gradient(rgba(26, 35, 126, 1), rgba(106, 27, 154, 1));
+  border: 3px solid #673AB7;
+}
+/*blood measurement input form style*/
+.new-measurings {
+  position: relative;
+  top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 60%;
+  left: 20%;
+  height: 130px;
+  transition: opacity 5s;
+}
+.visible {
+  visibility: visible;
+  opacity: 1;  
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;  
+}
+.blood-pressure-input {
+  padding: 0;
+  margin: 0 15px;
+  border-radius: 20px;
+  height: 100%;
+  width: 44%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  background-image: linear-gradient(rgba(26, 35, 126, 0.3), rgba(106, 27, 154, 0.5));
+  box-shadow: 5px 5px 3px;
+}
+.blood-pressure-title {
+  flex: 0 1 45px;
+  min-height: 45px;
+  padding: 10px 10px 0 10px;
+  display: flex;
+}
+.device-screen {
+  flex: 0 1 40px;
+}
+.device-screen h3 {
+  text-align: right;
+  padding-right: 5px;
+  height: 50%;
+  line-height: 155%;
+  font-weight: 400;
+  font-size: 65%;
+}
+.red {
+  background-color: rgba(229, 57, 53, 1);
+  border-top-left-radius: 100px;
+  color: #fff;
+}
+.red-transparent {
+  background-color: rgba(229, 57, 53, 0.15);
+  border-top-left-radius: 100px;
+  color: #aaa;
+}
+.blue {
+  background-color: rgba(26, 35, 126, 1);
+  border-bottom-left-radius: 100px;
+  color: #fff;
+}
+.blue-transparent {
+  background-color: rgba(26, 35, 126, 0.3);
+  border-bottom-left-radius: 100px;
+  color: #aaa;
+}
+.blood-pressure-title h2 {
+  flex: 1;
+  flex-wrap: nowrap;
+  padding-left: 10px;
+  font-size: 130%;
+  color: #fff;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  background-image: linear-gradient(rgba(26, 35, 126, 1), rgba(106, 27, 154, 1));
+  line-height: 160%;
+}
+/*blood pressure input brackets*/
+.input-form {
+  width: 100%;
+  padding: 0 10px;
+  flex: 0 1 85px;
+  min-height: 85px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+input {
+ text-align: center;
+ font-size: 75%;
+}
+input[type=submit] {
+  height: 30px;
+  border-radius: 5px;
+  padding: 4px 10px;
+}
+#upper-pressure-input-field,
+#lower-pressure-input-field {
+ border-radius: 10px;
+ padding: 4px 5px;
+ margin: 7px auto;
+}
+.submit-multiple-inputs-next,
+.submit-multiple-inputs-close {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 10px 10px 10px;
+  border-top: 2px solid black;
+}
+#submit-multiple-inputs-next-id,
+#submit-multiple-inputs-close-id {
+  background-color: #b5a6ab;
+  align-self: flex-end;
+}

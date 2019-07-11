@@ -1,6 +1,6 @@
 /*imported font*/
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,400,400i,700');
-/*general sytling*/
+/*general styling*/
 * {
   margin: 0;
   padding: 0;
@@ -26,8 +26,10 @@ html, body {
     top: 30px;
     left: 12%;
     display: flex;
+    flex-wrap: nowrap;
 }
 .logo {
+    height: 100%;
     flex: 1;
     margin: 0;
 }
@@ -37,10 +39,15 @@ html, body {
 .main-title-text {
     background-image: linear-gradient(rgba(229, 57, 53, 0.8), rgba(106, 27, 154, 0.8));
     border-radius: 100px;
-    text-transform: uppercase;height: auto;
+    text-transform: uppercase;
+    height: auto;
     flex: 0 1 88%;
-    margin: 0;
-    line-height: 240%;
+    margin: 0 auto;
+    font-size: 300%;
+    border: 2px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 h1 {
     font-size: 200%;
@@ -63,22 +70,27 @@ nav {
 .options-to-choose {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 .options-to-choose a:link,
 .options-to-choose a:visited {
-  display: inline-block;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
   border-radius: 100px;
-  padding: 8px 15px;
+  padding: 10px 30px;
   border: 3px solid #512DA8;
   background-image: linear-gradient(rgba(26, 35, 126, 0.3), rgba(106, 27, 154, 0.5));
   color: #fff;
+  font-size: 115%;
   text-decoration: none;
-  font-size: 105%;
   transition: color 0.2s, border 0.2s;
 }
 .options-to-choose a:hover,
 .options-to-choose a:active {
   color: #ddd;
+  height: 100%;
   background-image: linear-gradient(rgba(26, 35, 126, 1), rgba(106, 27, 154, 1));
   border: 3px solid #673AB7;
 }

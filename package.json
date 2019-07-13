@@ -17,6 +17,8 @@
   "homepage": "https://github.com/Bubilix/Blood-pressure#readme",
   "description": "",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1",
+    "path": "^0.12.7"
   }
 }

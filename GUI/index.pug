@@ -1,0 +1,55 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', type='text/css', href='style.css')
+    title Blood measuring
+  body
+    // main image and title
+    .header-title-box
+      figure.logo
+        img(src='https://www.welchallyn.com/content/dam/welchallyn/images/Product-Images/Cardiopulmonary/Ambulatory-Blood-Pressure-Monitor/ABPM%207100/PWA_icon.png', alt='Heart-rate_logo')
+      h1.main-title-text=moj_tlak
+    // navigation toolbar
+    nav.nonactive-nav
+      .options-to-choose
+        a#new-measure(href='#') Unesi novo mjerenje
+        a#new-multiple-measures(href='#') Unesi niz novih mjerenja
+        a#graphics(href='#') Graficki prikaz zadnjih mjerenja
+    // new measurments box
+    .new-measurings.hidden
+      // blood upper pressure input form
+      .blood-pressure-input
+        // title description
+        .blood-pressure-title
+          // 120/80 image rendering
+          .device-screen
+            h3.red 120
+            h3.blue-transparent 80
+          // blood pressure type
+          h2 Gornji tlak
+        // input area
+        .input-form
+          // input field
+          input#upper-pressure-input-field(type='text', name='upper-pressure', placeholder='Unesi gornji tlak', required='')
+          // input submit button
+          input#submit-upper-pressure(type='submit', value='Spremi')
+        // submit input data
+        .submit-multiple-inputs-next.hidden
+          input#submit-multiple-inputs-next-id(type='submit', value='Unesi sljedece mjerenje')
+      // blood lower pressure input form
+      .blood-pressure-input
+        // title description
+        .blood-pressure-title
+          .device-screen
+            h3.red-transparent 120
+            h3.blue 80
+          h2 Donji tlak
+        // input area
+        .input-form
+          input#lower-pressure-input-field(type='text', name='lower-pressure', placeholder='Unesi donji tlak', required='')
+          input#submit-lower-pressure(type='submit', value='Spremi')
+        // submit input data
+        .submit-multiple-inputs-close.hidden
+          input#submit-multiple-inputs-close-id(type='submit', value='Pohrani unesena mjerenja')

@@ -3,14 +3,15 @@ html(lang='en')
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    link(rel='stylesheet', type='text/css', href='style.css')
-    title Blood measuring
+    style
+      include ./assets/css/style.css
+    title Mjerenje tlaka
   body
     // main image and title
     .header-title-box
       figure.logo
         img(src='https://www.welchallyn.com/content/dam/welchallyn/images/Product-Images/Cardiopulmonary/Ambulatory-Blood-Pressure-Monitor/ABPM%207100/PWA_icon.png', alt='Heart-rate_logo')
-      h1.main-title-text=moj_tlak
+      h1.main-title-text Dijagram mjerenja tlaka
     // navigation toolbar
     nav.nonactive-nav
       .options-to-choose

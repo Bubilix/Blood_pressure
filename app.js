@@ -1,18 +1,18 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const DOMs = require('DOMstrings');
+const DOMstrings = require('./public/DOMstrings');
+const UICtrl = require('./Controlls.js/UIController');
 
-app.use(express.static(path.join(__dirname, 'GUI')));
 
-app.use(DOMs);
+app.set('views', './views');
+app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
     if (res) {
-        res.status(200).sendFile(path.join(__dirname, 'GUI', 'index.html'));
-        console.log(DOMs.nav);
+        res.render('index');
     } else {
-        res.status(404).send('Page not found!');
+        res.status(404).write('Page not found!');
     }
 });
 

@@ -58,6 +58,8 @@ h1 {
 }
 nav {
   position: relative;
+  -webkit-transition: top 1s;
+  -moz-transition: top 1s;
   transition: top 1s;
   text-align: center;
   border: 1px solid black;
@@ -107,7 +109,7 @@ nav {
   left: 20%;
   height: 130px;
   transition: opacity 5s;
-  border: 3px solid green;
+  border: 1px solid green;
 }
 .visible {
   visibility: visible;

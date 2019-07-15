@@ -8,49 +8,50 @@ html(lang='en')
     title Mjerenje tlaka
   body
     // main image and title
-    .header-title-box
+    div.header-title-box
       figure.logo
         img(src='https://www.welchallyn.com/content/dam/welchallyn/images/Product-Images/Cardiopulmonary/Ambulatory-Blood-Pressure-Monitor/ABPM%207100/PWA_icon.png', alt='Heart-rate_logo')
       h1.main-title-text Dijagram mjerenja tlaka
     // navigation toolbar
-    nav.nonactive-nav
+    nav(class=nav_class)
       .options-to-choose
-        a#new-measure(href='#') Unesi novo mjerenje
+        a#new-measure(href='/input_new_measuring') Unesi novo mjerenje
         a#new-multiple-measures(href='#') Unesi niz novih mjerenja
         a#graphics(href='#') Graficki prikaz zadnjih mjerenja
     // new measurments box
-    .new-measurings.hidden
+    div.new-measurings(class=new_measuring_visibility)
       // blood upper pressure input form
-      .blood-pressure-input
+      div.blood-pressure-input
         // title description
-        .blood-pressure-title
+        div.blood-pressure-title
           // 120/80 image rendering
-          .device-screen
+          div.device-screen
             h3.red 120
             h3.blue-transparent 80
           // blood pressure type
           h2 Gornji tlak
         // input area
-        .input-form
+        div.input-form
           // input field
           input#upper-pressure-input-field(type='text', name='upper-pressure', placeholder='Unesi gornji tlak', required='')
           // input submit button
           input#submit-upper-pressure(type='submit', value='Spremi')
         // submit input data
-        .submit-multiple-inputs-next.hidden
+        div.submit-multiple-inputs-next.hidden
           input#submit-multiple-inputs-next-id(type='submit', value='Unesi sljedece mjerenje')
       // blood lower pressure input form
-      .blood-pressure-input
+      div.blood-pressure-input
         // title description
-        .blood-pressure-title
-          .device-screen
+        div.blood-pressure-title
+          div.device-screen
             h3.red-transparent 120
             h3.blue 80
           h2 Donji tlak
         // input area
-        .input-form
+        div.input-form
           input#lower-pressure-input-field(type='text', name='lower-pressure', placeholder='Unesi donji tlak', required='')
           input#submit-lower-pressure(type='submit', value='Spremi')
         // submit input data
-        .submit-multiple-inputs-close.hidden
+        div.submit-multiple-inputs-close.hidden
           input#submit-multiple-inputs-close-id(type='submit', value='Pohrani unesena mjerenja')
+  script(src='./scripts/onclick.js')

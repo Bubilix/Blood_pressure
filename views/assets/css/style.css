@@ -27,7 +27,6 @@ html, body {
     left: 12%;
     display: flex;
     flex-wrap: nowrap;
-    border:1px solid red;
 }
 .logo {
     height: 100%;
@@ -60,7 +59,6 @@ nav {
   position: relative;
   transition: top 1s;
   text-align: center;
-  border: 1px solid black;
 }
 .nonactive-nav {
   top: 200px;
@@ -105,9 +103,8 @@ nav {
   justify-content: center;
   width: 60%;
   left: 20%;
-  height: 130px;
+  height: 140px;
   transition: opacity 5s;
-  border: 3px solid green;
 }
 .visible {
   visibility: visible;
@@ -183,7 +180,7 @@ nav {
 .input-form {
   width: 100%;
   padding: 0 10px;
-  flex: 0 1 85px;
+  flex: 0 1 auto;
   min-height: 85px;
   display: flex;
   flex-direction: column;
@@ -192,9 +189,9 @@ nav {
 input {
  text-align: center;
  font-size: 75%;
+ height: 32px;
 }
 input[type=submit] {
-  height: 30px;
   border-radius: 5px;
   padding: 4px 10px;
 }

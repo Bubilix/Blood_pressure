@@ -12,14 +12,13 @@ app.use(express.static(path.join(__dirname,'views', 'assets','css')));
 app.get('/', (req, res) => {
     if (res) {
         res.render('index', { nav_class: 'nonactive-nav', new_measuring_visibility: 'hidden'});
-        //res.sendFile('index.html', {root: __dirname+'/original_html'});
     } else {
         res.status(404).write('Page not found!');
     }
 });
 app.get('/input_new_measuring', (req, res) => {
     if (res) {
-        res.render('index', { nav_class: "active_nav", new_measuring_visibility: 'visible'});
+        res.render('index', { nav_class: "active-nav", new_measuring_visibility: 'visible'});
     } else {
         res.status(404).write('Page not found!');
     }

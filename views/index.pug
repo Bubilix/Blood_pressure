@@ -24,18 +24,16 @@ html(lang='en')
       div.blood-pressure-input
         // title description
         div.blood-pressure-title
-          // 120/80 image rendering
+          // blood pressure type
           div.device-screen
             h3.red 120
             h3.blue-transparent 80
-          // blood pressure type
+          // 120/80 image rendering
           h2 Gornji tlak
-        // input area
-        div.input-form
+        // textarea
+        form#input-form
           // input field
-          input#upper-pressure-input-field(type='text', name='upper-pressure', placeholder='Unesi gornji tlak', required='', select='')
-          // input submit button
-          input#submit-upper-pressure(type='submit', value='Spremi')
+          input#upper-pressure-input-field(type='text', name='upper-pressure', placeholder='Unesi gornji tlak', required='', autofocus='')
         // submit input data
         div.submit-multiple-inputs-next.hidden
           input#submit-multiple-inputs-next-id(type='submit', value='Unesi sljedece mjerenje')
@@ -47,10 +45,9 @@ html(lang='en')
             h3.red-transparent 120
             h3.blue 80
           h2 Donji tlak
-        // input area
-        div.input-form
+        // textarea
+        form(form='input-form')
           input#lower-pressure-input-field(type='text', name='lower-pressure', placeholder='Unesi donji tlak', required='')
-          input#submit-lower-pressure(type='submit', value='Spremi')
         // submit input data
         div.submit-multiple-inputs-close.hidden
           input#submit-multiple-inputs-close-id(type='submit', value='Pohrani unesena mjerenja')

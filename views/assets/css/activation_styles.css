@@ -1,0 +1,14 @@
+.nonactive-nav {
+    top: 200px;
+  }
+  .active-nav {
+    top: 80px;
+  }
+.visible {
+    visibility: visible;
+    opacity: 1;  
+  }
+  .hidden {
+    visibility: hidden;
+    opacity: 0;  
+  }

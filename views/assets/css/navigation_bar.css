@@ -1,0 +1,32 @@
+/*navigation style*/
+nav {
+  position: relative;
+  transition: top 1s;
+  text-align: center;
+}
+.options-to-choose {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .options-to-choose a:link,
+  .options-to-choose a:visited {
+    margin: 0 20px;
+    display: inline-block;
+    height: 100%;
+    border-radius: 100px;
+    padding: 10px 30px;
+    border: 3px solid #512DA8;
+    background-image: linear-gradient(rgba(26, 35, 126, 0.3), rgba(106, 27, 154, 0.5));
+    color: #fff;
+    font-size: 115%;
+    text-decoration: none;
+    transition: color 0.2s, border 0.2s;
+  }
+  .options-to-choose a:hover,
+  .options-to-choose a:active {
+    color: #ddd;
+    height: 100%;
+    background-image: linear-gradient(rgba(26, 35, 126, 1), rgba(106, 27, 154, 1));
+    border: 3px solid #673AB7;
+  }

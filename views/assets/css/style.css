@@ -30,8 +30,3 @@ h1 {
     display: inline;
     color: #EEEEEE;
 }
-nav {
-  position: relative;
-  transition: top 1s;
-  text-align: center;
-}

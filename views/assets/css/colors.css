@@ -1,20 +1,20 @@
 .red {
-    background-color: rgba(229, 57, 53, 1);
-    border-top-left-radius: 100px;
-    color: #fff;
-  }
-  .red-transparent {
-    background-color: rgba(229, 57, 53, 0.15);
-    border-top-left-radius: 100px;
-    color: #aaa;
-  }
-  .blue {
-    background-color: rgba(26, 35, 126, 1);
-    border-bottom-left-radius: 100px;
-    color: #fff;
-  }
-  .blue-transparent {
-    background-color: rgba(26, 35, 126, 0.3);
-    border-bottom-left-radius: 100px;
-    color: #aaa;
-  }
+  background-color: rgba(229, 57, 53, 1);
+  border-top-left-radius: 100px;
+  color: #fff;
+}
+.red-transparent {
+  background-color: rgba(229, 57, 53, 0.15);
+  border-top-left-radius: 100px;
+  color: #aaa;
+}
+.blue {
+  background-color: rgba(26, 35, 126, 1);
+  border-bottom-left-radius: 100px;
+  color: #fff;
+}
+.blue-transparent {
+  background-color: rgba(26, 35, 126, 0.3);
+  border-bottom-left-radius: 100px;
+  color: #aaa;
+}

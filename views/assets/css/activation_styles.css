@@ -1,14 +1,17 @@
-.nonactive-nav {
-    top: 200px;
-  }
-  .active-nav {
-    top: 80px;
-  }
+.nonactive-nav1 {
+  top: 150px;
+}
+.nonactive-nav2 {
+  top: 200px;
+}
+.active-nav {
+  top: 80px;
+}
 .visible {
-    visibility: visible;
-    opacity: 1;  
-  }
-  .hidden {
-    visibility: hidden;
-    opacity: 0;  
-  }
+  visibility: visible;
+  opacity: 1;  
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;  
+}

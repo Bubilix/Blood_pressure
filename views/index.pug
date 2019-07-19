@@ -49,8 +49,8 @@ html(lang='en')
         form(form='input-form')
           input#lower-pressure-input-field(type='text', name='lower-pressure', placeholder='Unesi donji tlak', required='')
       // submit input data
-      div.submit-inputs
+      form.submit-inputs
         div
-          input#submit-multiple-inputs-close-id(type='submit', value='Pohrani unesena mjerenja', href="/")
+          input#submit-multiple-inputs-close-id(type='submit', value='Pohrani unesena mjerenja', formaction="/")
         div(class=submit_multi_visibility)
-          input#submit-multiple-inputs-close-id(type='submit', value='Pohrani unesena mjerenja' href="/")
+          input#submit-multiple-inputs-close-id(type='submit', value='Pohrani unesena mjerenja' formaction="/")

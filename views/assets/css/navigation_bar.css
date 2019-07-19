@@ -2,16 +2,18 @@
 nav {
   position: relative;
   transition: top 1s;
+  display: flex;
+  justify-content: center;
 }
 .options-to-choose {
   margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
+  box-sizing: content-box;
   padding: 20px;
   background-image: linear-gradient(rgba(229, 57, 53, 0.4), rgba(106, 27, 154, 0.4));
-  width: 50%;
-  border-radius: 8% / 40%;
+  border-radius: 5% / 40%;
+  border: 1px solid #512DA8;
+  max-width: 100%;
 }
 .options-to-choose a:link,
 .options-to-choose a:visited {

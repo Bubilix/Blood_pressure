@@ -1,9 +1,15 @@
-const Joi = require('joi');
-const debug = require('debug')('app:startup');
+//const Joi = require('../node_modules/joi');
+//const debug = require('debug')('app:startup');
 const express = require('express');
 const app = express();
 const path = require('path');
-const config = require('config');
+//const config = require('../node_modules/config');
+const mongoose = require('../node_modules/mongoose');
+
+mongoose.connect('mongodb://localhost:27017/inputValuesBloodPressure', {useNewUrlParser: true})
+    .then(() => console.log('Connected to MongoDB...'))
+    .catch(err => console.log('Could not connect to MongoDB.', err));
+
 
 
 app.set('views', './views');

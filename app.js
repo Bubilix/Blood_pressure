@@ -4,17 +4,17 @@ const express = require('express');
 const app = express();
 const path = require('path');
 //const config = require('../node_modules/config');
-const mongoose = require('../node_modules/mongoose');
+//const mongoose = require('../node_modules/mongoose');
 
-mongoose.connect('mongodb://localhost:27017/inputValuesBloodPressure', {useNewUrlParser: true})
-    .then(() => console.log('Connected to MongoDB...'))
-    .catch(err => console.log('Could not connect to MongoDB.', err));
+//mongoose.connect('mongodb://localhost:27017/inputValuesBloodPressure', {useNewUrlParser: true})
+  //  .then(() => console.log('Connected to MongoDB...'))
+  //  .catch(err => console.log('Could not connect to MongoDB.', err));
 
 
 
 app.set('views', './views');
 app.set('view engine', 'pug');
-app.use(express.static(path.join(__dirname, 'assets','css')));
+app.use(express.static(path.join(__dirname, 'views', 'assets','css')));
 app.use(express.urlencoded({extended: 'true'}));
 
 app.get('/', (req, res) => {

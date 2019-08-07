@@ -1,26 +1,22 @@
 /*blood measurement input form style*/
 .new-measurings {
   position: relative;
-  top: 100px;
+  top: 26px;
   display: flex;
   flex-direction: column;
-  width: 30%;
-  left: 35%;
-  height: 250px;
+  width: 22%;
   transition: opacity 5s;
-}
-.blood-pressure-input {
-  padding: 0;
-  margin: 0 15px;
-  border-radius: 20px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  margin: auto;
   border: 1px solid black;
   background-image: linear-gradient(rgba(26, 35, 126, 0.3), rgba(106, 27, 154, 0.5));
   box-shadow: 5px 5px 3px;
-  border: 1px solid green;
-  margin: 3px 0;
+  border-radius: 20px;
+}
+.blood-pressure-input {
+  padding: 0;
+  margin: 0px 15px 10px 15px;
+  display: flex;
+  flex-direction: column;
 }
 .blood-pressure-title {
   min-height: 60px;
@@ -49,10 +45,7 @@
   color: #fff;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  border-top-right-radius: 100px;
-  border-bottom-right-radius: 100px;
-  border-bottom-left-radius: 100px;
-  border-top-left-radius: 100px;
+  border-radius: 100px;
   background-image: linear-gradient(rgba(26, 35, 126, 1), rgba(106, 27, 154, 1));
   line-height: 160%;
   text-align: center;
@@ -61,39 +54,29 @@
 /*blood pressure input brackets*/
 form {
   width: 100%;
-  padding: 0 10px;
-  flex: 0 1 auto;
-  min-height: 85px;
   display: flex;
   flex-direction: column;
 }
 input {
- text-align: center;
- font-size: 75%;
- height: 32px;
- align-items: center;
+  text-align: center;
+  font-size: 75%;
+  height: 36px;
+  align-items: center;
+  margin: 7px auto;
 }
 input[type=submit] {
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 4px 10px;
 }
-#upper-pressure-input-field,
-#lower-pressure-input-field {
+input[type=text] {
  border-radius: 10px;
  padding: 4px 5px;
- margin: 7px auto;
 }
-.submit-multiple-inputs-next,
-.submit-multiple-inputs-close {
-  width: 100%;
-  flex: 1;
-  display: flex;
-  justify-content: space-evenly;
-  padding: 0 10px 10px 10px;
+#submitInputs {
+  padding: 10px 0px;
   border-top: 2px solid black;
 }
-#submit-multiple-inputs-next-id,
-#submit-multiple-inputs-close-id {
-  background-color: #b5a6ab;
-  align-self: flex-end;
+#submitInputs > div {
+  display: flex;
+  flex-direction: column;
 }

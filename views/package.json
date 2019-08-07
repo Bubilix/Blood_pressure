@@ -17,7 +17,12 @@
   "homepage": "https://github.com/Bubilix/Blood-pressure#readme",
   "description": "",
   "dependencies": {
+    "config": "^3.2.1",
+    "debug": "^4.1.1",
     "express": "^4.17.1",
+    "joi": "^14.3.1",
+    "mongodb": "^3.3.0-beta2",
+    "mongoose": "^5.6.8",
     "nodemon": "^1.19.1",
     "path": "^0.12.7",
     "pug": "^2.0.4"

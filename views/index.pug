@@ -15,8 +15,9 @@ html(lang='en')
     // navigation toolbar
     nav(class=nav_class_input)
       div.options-to-choose
-        a#new-measure(href='/input_new_value') Unesi novo mjerenje
-        a#new-multiple-values(href='/input_multiple_values') Unesi niz novih mjerenja
+        a(href='/input_new_value') Unesi novo mjerenje
+        a(href='/input_multiple_values') Unesi niz novih mjerenja
+        a(href='/select_file') Unesi iz vanjske datoteke
     nav(class=nav_class_show)
       div.options-to-choose
         a#average(href='/average') Prosjecne vrijednosti
@@ -49,8 +50,10 @@ html(lang='en')
         form(form='input-form')
           input#lower-pressure-input-field(type='text', name='lower-pressure', placeholder='Unesi donji tlak', required='')
       // submit input data
-      div.submit-inputs
+      -let submitInputs = {multiple: multiple}
+      form#submitInputs
         div
-          input#submit-multiple-inputs-close-id(type='submit', value='Pohrani unesena mjerenja', href="/")
-        div(class=submit_multi_visibility)
-          input#submit-multiple-inputs-close-id(type='submit', value='Pohrani unesena mjerenja' href="/")
+          input(type='submit', value='Pohrani unesena mjerenja', formaction="/")
+        if submitInputs.multiple === 'yes'
+          div
+            input(type='submit', value='Pohrani unesena mjerenja' formaction="/")

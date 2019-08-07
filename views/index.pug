@@ -1,0 +1,56 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    style
+      include ./assets/css/style.css
+    title Mjerenje tlaka
+  body
+    // main image and title
+    div.header-title-box
+      figure.logo
+        img(src='https://www.welchallyn.com/content/dam/welchallyn/images/Product-Images/Cardiopulmonary/Ambulatory-Blood-Pressure-Monitor/ABPM%207100/PWA_icon.png', alt='Heart-rate_logo')
+      h1.main-title-text Dijagram mjerenja tlaka
+    // navigation toolbar
+    nav(class=nav_class_input)
+      div.options-to-choose
+        a#new-measure(href='/input_new_value') Unesi novo mjerenje
+        a#new-multiple-values(href='/input_multiple_values') Unesi niz novih mjerenja
+    nav(class=nav_class_show)
+      div.options-to-choose
+        a#average(href='/average') Prosjecne vrijednosti
+        a#graphics(href='#') Graficki prikaz zadnjih mjerenja
+    // new measurments box
+    div.new-measurings(class=new_measuring_visibility)
+      // blood upper pressure input form
+      div.blood-pressure-input
+        // title description
+        div.blood-pressure-title
+          // blood pressure type
+          div.device-screen
+            h3.red 120
+            h3.blue-transparent 80
+          // 120/80 image rendering
+          h2 Gornji tlak
+        // textarea
+        form#input-form
+          // input field
+          input#upper-pressure-input-field(type='text', name='upper-pressure', placeholder='Unesi gornji tlak', required='', autofocus='')
+      // blood lower pressure input form
+      div.blood-pressure-input
+        // title description
+        div.blood-pressure-title
+          div.device-screen
+            h3.red-transparent 120
+            h3.blue 80
+          h2 Donji tlak
+        // textarea
+        form(form='input-form')
+          input#lower-pressure-input-field(type='text', name='lower-pressure', placeholder='Unesi donji tlak', required='')
+      // submit input data
+      div.submit-inputs
+        div
+          input#submit-multiple-inputs-close-id(type='submit', value='Pohrani unesena mjerenja', href="/")
+        div(class=submit_multi_visibility)
+          input#submit-multiple-inputs-close-id(type='submit', value='Pohrani unesena mjerenja' href="/")

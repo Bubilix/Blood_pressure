@@ -1,0 +1,31 @@
+/*main title*/
+.header-title-box {
+    position: relative;
+    height: 14%;
+    width: 76%;
+    top: 30px;
+    left: 12%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.logo {
+    height: 100%;
+    flex: 1;
+    margin: 0;
+}
+.logo img {
+    height: 100%;
+}
+.main-title-text {
+    background-image: linear-gradient(rgba(229, 57, 53, 0.8), rgba(106, 27, 154, 0.8));
+    border-radius: 100px;
+    text-transform: uppercase;
+    height: auto;
+    flex: 0 1 88%;
+    margin: 0 auto;
+    font-size: 300%;
+    border: 2px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

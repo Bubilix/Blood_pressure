@@ -17,7 +17,7 @@
   "homepage": "https://github.com/Bubilix/Blood-pressure#readme",
   "description": "",
   "dependencies": {
-    "config": "^3.2.1",
+    "config": "^3.2.2",
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "joi": "^14.3.1",

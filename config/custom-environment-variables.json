@@ -1,5 +1,8 @@
 {
-    "mail": {
-        "password": "blood_pressure_app_password"
+    "db": {
+        "DBpassword": "DBpassword"
+    },
+    "Blood_pressure_app_port": {
+        "port": "PORT"
     }
 }

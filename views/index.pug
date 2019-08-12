@@ -53,7 +53,7 @@ html(lang='en')
       -let submitInputs = {multiple: multiple}
       form#submitInputs
         div
-          input(type='submit', value='Pohrani unesena mjerenja', formaction="/")
+          input(type='submit', value='Pohrani unesena mjerenja', formaction="/", method="post")
         if submitInputs.multiple === 'yes'
           div
-            input(type='submit', value='Pohrani unesena mjerenja' formaction="/")
+            input(type='submit', value='Pohrani unesena mjerenja', formaction="/", method="post")

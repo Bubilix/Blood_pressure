@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'views', 'assets', 'css')));
 app.use(bodyParser.urlencoded({ extended: 'true' }));
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
     if (res) {
         res.render('index', {
             nav_class_input: 'nonactive-nav1',
@@ -29,6 +29,7 @@ app.get('/', (req, res) => {
             new_measuring_visibility: 'hidden',
             multiple: ''
         });
+        console.log(inputValues);
     } else {
         res.status(404).write('Page not found!');
     }

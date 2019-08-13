@@ -9,13 +9,14 @@ const mongoose = require('mongoose');
 const InputValues = require('./api/models/inputValues');
 const validation = require('./middleware/validation');
 
-
+let database;
 let inputs = [];
 const url = 'mongodb+srv://Bubilix:' + config.get('db.DBpassword') + '@clusterbubilix-qkwah.mongodb.net/test?retryWrites=true&w=majority';
 mongoose.connect(url, { useNewUrlParser: true }, function(err, db) {
     if (err) {
         console.log('Could not connect to MongoDB.', err)
     } else {
+        database = db;
         console.log('Connected to MongoDB...');
     }
 });

@@ -72,11 +72,11 @@ input[type=text] {
  border-radius: 10px;
  padding: 4px 5px;
 }
-#submitInputs {
+.formFormat {
   padding: 10px 0px;
   border-top: 2px solid black;
 }
-#submitInputs > div {
+.formFormat > div {
   display: flex;
   flex-direction: column;
 }

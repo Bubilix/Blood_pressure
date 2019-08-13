@@ -35,9 +35,9 @@ html(lang='en')
           // 120/80 image rendering
           h2 Gornji tlak
         // textarea
-        form#input-form
+        form
           // input field
-          input#upper-pressure-input-field(type='text', name='upper-pressure', placeholder='Unesi gornji tlak', required='', autofocus='')
+          input#upper-pressure-input-field(type='text', form="submitInputs", name='upperValue', placeholder='Unesi gornji tlak', required='', autofocus='')
       // blood lower pressure input form
       div.blood-pressure-input
         // title description
@@ -47,13 +47,13 @@ html(lang='en')
             h3.blue 80
           h2 Donji tlak
         // textarea
-        form(form='input-form')
-          input#lower-pressure-input-field(type='text', name='lower-pressure', placeholder='Unesi donji tlak', required='')
+        form
+          input#lower-pressure-input-field(type='text', form="submitInputs", name='lowerValue', placeholder='Unesi donji tlak', required='')
       // submit input data
       -let submitInputs = {multiple: multiple}
-      form#submitInputs
+      form.formFormat(id="submitInputs" action="/submit" method="post")
         div
-          input(type='submit', value='Pohrani unesena mjerenja', formaction="/", method="post")
+          input(type='submit', value='Pohrani unesena mjerenja')
         if submitInputs.multiple === 'yes'
           div
-            input(type='submit', value='Pohrani unesena mjerenja', formaction="/", method="post")
+            input(type='submit', value='Pohrani unesena mjerenja')

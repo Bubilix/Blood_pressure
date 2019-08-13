@@ -59,13 +59,13 @@ app.post('/', (req, res, next) => {
     //     upper: document.querySelector.getElementById('upper-pressure-input-field').value,
     //     lower: document.querySelector.getElementById('lower-pressure-input-field').value
     // }
-    // const inputMeasuring = {
-    //     id: inputValues.length + 1,
-    //     upperValue: inputs.upper,
-    //     lowerValue: inputs.lower
-    // }
-    console.log(req.params);
-    inputValues.push(req.params);
+    const inputMeasuring = {
+        id: inputValues.length + 1,
+        upperValue: req.params.upperPressure,
+        lowerValue: req.params.lowerPressure
+    }
+    console.log(inputMeasuring);
+    inputValues.push(inputMeasuring);
     // res.send(req.params);
     // console.log(inputValues);
 });

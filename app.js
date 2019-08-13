@@ -9,11 +9,15 @@ const mongoose = require('mongoose');
 const InputValues = require('./api/models/inputValue');
 const validation = require('./middleware/validation');
 
+let database;
+inputs = [];
 mongoose.connect('mongodb+srv://Bubilix:' + config.get('db.DBpassword') + '@clusterbubilix-qkwah.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true })
-    .then(() => console.log('Connected to MongoDB...'))
+    .then(function(db) {
+        database = db;
+        console.log('Connected to MongoDB...');
+    })
     .catch(err => console.log('Could not connect to MongoDB.', err));
 
-inputs = [];
 
 app.set('views', './views');
 app.set('view engine', 'pug');
@@ -29,7 +33,7 @@ app.get('/', (req, res, next) => {
             new_measuring_visibility: 'hidden',
             multiple: ''
         });
-        console.log(inputValues);
+        console.log(inputs);
     } else {
         res.status(404).write('Page not found!');
     }
@@ -40,9 +44,13 @@ app.post('/submit', (req, res, next) => {
         upperValue: req.body.upperValue,
         lowerValue: req.body.lowerValue
     });
-    input.save(function(err) {
-        if (err) throw err;
-        });
+    if (database) {
+        input.save(function(err) {
+            if (err) throw err;
+            });
+    } else {
+        inputs.push(input);
+    };
     res.redirect('/');
 });
 app.get('/input_new_value', (req, res, next) => {

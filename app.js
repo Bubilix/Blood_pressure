@@ -6,17 +6,19 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const config = require('config');
 const mongoose = require('mongoose');
-const InputValues = require('./api/models/inputValue');
+const InputValues = require('./api/models/inputValues');
 const validation = require('./middleware/validation');
 
-let database;
-inputs = [];
-mongoose.connect('mongodb+srv://Bubilix:' + config.get('db.DBpassword') + '@clusterbubilix-qkwah.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true })
-    .then(function(db) {
-        database = db;
+
+let inputs = [];
+const url = 'mongodb+srv://Bubilix:' + config.get('db.DBpassword') + '@clusterbubilix-qkwah.mongodb.net/test?retryWrites=true&w=majority';
+mongoose.connect(url, { useNewUrlParser: true }, function(err, db) {
+    if (err) {
+        console.log('Could not connect to MongoDB.', err)
+    } else {
         console.log('Connected to MongoDB...');
-    })
-    .catch(err => console.log('Could not connect to MongoDB.', err));
+    }
+});
 
 
 app.set('views', './views');
@@ -44,13 +46,9 @@ app.post('/submit', (req, res, next) => {
         upperValue: req.body.upperValue,
         lowerValue: req.body.lowerValue
     });
-    if (database) {
-        input.save(function(err) {
-            if (err) throw err;
-            });
-    } else {
-        inputs.push(input);
-    };
+    input.save(function(err, db) {
+        if (err) throw err;
+    });
     res.redirect('/');
 });
 app.get('/input_new_value', (req, res, next) => {
@@ -76,6 +74,12 @@ app.get('/input_multiple_values', (req, res, next) => {
     } else {
         res.status(404).write('Page not found!');
     }
+});
+app.get('/average', (req, res) => {
+    InputValues.find({}, function(err, docs) {
+        if (err) throw err;
+        else res.send(docs);
+    })
 });
 
 const port = config.get('Blood_pressure_app_port.port') || 3000;

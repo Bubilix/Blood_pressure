@@ -67,7 +67,7 @@ app.get('/input_new_value', (req, res, next) => {
 app.get('/input_multiple_values', (req, res, next) => {
     if (res) {
         res.render('index', {
-            nav_class_input: "active-nav",
+            nav_class_input: "active-nav1",
             nav_class_show: 'hidden',
             new_measuring_visibility: 'visible',
             multiple: 'yes'
@@ -79,7 +79,15 @@ app.get('/input_multiple_values', (req, res, next) => {
 app.get('/average', (req, res) => {
     InputValues.find({}, function(err, docs) {
         if (err) throw err;
-        else res.send(docs);
+        else {
+            res.render('index', {
+                nav_class_input: "hidden",
+                nav_class_show: 'active-nav2',
+                new_measuring_visibility: 'visible',
+                multiple: ''
+            });
+            //res.send(docs)};
+            }
     })
 });
 

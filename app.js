@@ -32,9 +32,7 @@ app.get('/', (req, res, next) => {
     if (res) {
         res.render('index', {
             nav_class_input: 'nonactive-nav1',
-            nav_class_show: 'nonactive-nav2',
-            new_measuring_visibility: 'hidden',
-            multiple: ''
+            nav_class_show: 'nonactive-nav2'
         });
         console.log(inputs);
     } else {
@@ -54,11 +52,9 @@ app.post('/submit', (req, res, next) => {
 });
 app.get('/input_new_value', (req, res, next) => {
     if (res) {
-        res.render('index', {
+        res.render('./assets/pugs/extend_new_measurings.pug', {
             nav_class_input: "active-nav",
-            nav_class_show: 'hidden',
-            new_measuring_visibility: 'visible',
-            multiple: ''
+            nav_class_show: 'hidden'
         });
     } else {
         res.status(404).write('Page not found!');
@@ -66,11 +62,9 @@ app.get('/input_new_value', (req, res, next) => {
 });
 app.get('/input_multiple_values', (req, res, next) => {
     if (res) {
-        res.render('index', {
-            nav_class_input: "active-nav1",
-            nav_class_show: 'hidden',
-            new_measuring_visibility: 'visible',
-            multiple: 'yes'
+        res.render('./assets/pugs/extend_multiple_new_measurings.pug', {
+            nav_class_input: "active-nav",
+            nav_class_show: 'hidden'
         });
     } else {
         res.status(404).write('Page not found!');
@@ -82,9 +76,7 @@ app.get('/average', (req, res) => {
         else {
             res.render('index', {
                 nav_class_input: "hidden",
-                nav_class_show: 'active-nav2',
-                new_measuring_visibility: 'visible',
-                multiple: ''
+                nav_class_show: 'active-nav'
             });
             //res.send(docs)};
             }

@@ -86,6 +86,18 @@ app.get('/average', (req, res) => {
             }
     })
 });
+app.get('/last_inputs', (req, res) => {
+    InputValues.find({}, function(err, docs) {
+        if (err) throw err;
+        else {
+            res.render('./assets/pugs/extend_output_last_ten_inputs.pug', {
+                nav_class_input: "hidden",
+                nav_class_show: 'active-nav'
+            });
+            console.log(docs.time);
+            }
+    })
+});
 
 const port = config.get('Blood_pressure_app_port.port') || 3000;
 app.listen(port, () => { console.log(`Listening on the port ${port}`) });

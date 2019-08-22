@@ -9,14 +9,14 @@ const mongoose = require('mongoose');
 const InputValues = require('./api/models/inputValues');
 const validation = require('./middleware/validation');
 
-let database;
+let database = false;
 let inputs = [];
 const url = 'mongodb+srv://Bubilix:' + config.get('db.DBpassword') + '@clusterbubilix-qkwah.mongodb.net/test?retryWrites=true&w=majority';
 mongoose.connect(url, { useNewUrlParser: true }, function(err, db) {
     if (err) {
         console.log('Could not connect to MongoDB.', err)
     } else {
-        database = db;
+        database = true;
         console.log('Connected to MongoDB...');
     }
 });
@@ -45,9 +45,13 @@ app.post('/submit', (req, res, next) => {
         upperValue: req.body.upperValue,
         lowerValue: req.body.lowerValue
     });
-    input.save(function(err, db) {
-        if (err) throw err;
-    });
+    if (database) {
+        input.save(function(err, db) {
+            if (err) throw err;
+        });
+    } else {
+        inputs.push(input);
+    }
     res.redirect('/');
 });
 app.get('/input_new_value', (req, res, next) => {
@@ -78,7 +82,7 @@ app.get('/average', (req, res) => {
                 nav_class_input: "hidden",
                 nav_class_show: 'active-nav'
             });
-            //res.send(docs)};
+            console.log(docs);
             }
     })
 });

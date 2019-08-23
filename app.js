@@ -92,12 +92,18 @@ app.get('/last_inputs', (req, res) => {
         if (err) throw err;
         else {
             const sortedData = sortingData(docs);
+            let dataTime = []; let dataUpper = []; let dataLower= [];
+            for (let data in sortedData) {
+                dataTime.push(data.time);
+                dataUpper.push(data.upperValue);
+                dataLower.push(data.lowerValue);
+            }
             console.log(sortedData);
             console.log(typeof sortedData[0].upperValue);
             res.render('./assets/pugs/extend_output_last_ten_inputs.pug', {
                 nav_class_input: "hidden",
                 nav_class_show: 'active-nav2',
-                sorted_data: {id: '1'}
+                sortedData: sortedData
             });
         }
     })

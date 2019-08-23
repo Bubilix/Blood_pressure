@@ -9,4 +9,5 @@ block body
                 th Donji tlak
         tbody
             tr
-                td= sorted_data
+                each data in sortedData
+                    td #{data.id}

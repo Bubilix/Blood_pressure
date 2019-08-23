@@ -1,66 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>/*imported font*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400,400i,700');
+/*general styling*/
+@import "./title.css";
+@import "./activation_styles.css";
+@import "./colors.css";
+@import "./navigation_bar.css";
+@import "./values.css";
+@import "./table.css";
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    /*imported font*/
-    @import url('https://fonts.googleapis.com/css?family=Roboto:100,400,400i,700');
-    /*general styling*/
-    @import "./title.css";
-    @import "./activation_styles.css";
-    @import "./colors.css";
-    @import "./navigation_bar.css";
-    @import "./values.css";
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      text-rendering: optimizeLegibility;
-      font-family: Roboto, Arial, sans-serif;
-      font-size: 20px;
-      font-weight: 400;
-      background-color: #fff;
-      width: 100vw;
-      background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("https://www.zdravobudi.hr/media/kardiologija/zdravobudi_fb_1200x628_20161116_2_752x416.png");
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-    }
-
-    h1 {
-      font-size: 200%;
-      text-align: center;
-      display: inline;
-      color: #EEEEEE;
-    }
-  </style>
-  <title>Mjerenje tlaka</title>
-</head>
-
-<body>
-  <!-- main image and title-->
-  <div class="header-title-box">
-    <figure class="logo"><img
-        src="https://www.welchallyn.com/content/dam/welchallyn/images/Product-Images/Cardiopulmonary/Ambulatory-Blood-Pressure-Monitor/ABPM%207100/PWA_icon.png"
-        alt="Heart-rate_logo"></figure>
-    <h1 class="main-title-text">Dijagram mjerenja tlaka</h1>
-  </div><!-- navigation toolbar-->
-  <nav>
-    <div class="options-to-choose"><a href="/input_new_value">Unesi novo mjerenje</a><a
-        href="/input_multiple_values">Unesi niz novih mjerenja</a><a href="/select_file">Unesi iz vanjske datoteke</a>
-    </div>
-  </nav>
-  <nav>
-    <div class="options-to-choose"><a id="average" href="/average">Prosjecne vrijednosti</a><a id="graphics"
-        href="#">Graficki prikaz zadnjih mjerenja</a></div>
-  </nav>
-</body>
-
-</html>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  text-rendering: optimizeLegibility;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  background-color: #fff;
+  width: 100vw;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("https://www.zdravobudi.hr/media/kardiologija/zdravobudi_fb_1200x628_20161116_2_752x416.png");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+h1 {
+    font-size: 200%;
+    text-align: center;
+    display: inline;
+    color: #EEEEEE;
+}</style><title>Mjerenje tlaka</title></head><body><!-- main image and title--><div class="header-title-box"><figure class="logo"><img src="https://www.welchallyn.com/content/dam/welchallyn/images/Product-Images/Cardiopulmonary/Ambulatory-Blood-Pressure-Monitor/ABPM%207100/PWA_icon.png" alt="Heart-rate_logo"></figure><h1 class="main-title-text">Dijagram mjerenja tlaka</h1></div><!-- navigation toolbar--><nav><div class="options-to-choose"><a href="/input_new_value">Unesi novo mjerenje</a><a href="/input_multiple_values">Unesi niz novih mjerenja</a><a href="/select_file">Unesi iz vanjske datoteke</a></div></nav><nav><div class="options-to-choose"><a href="/average">Prosjecne vrijednosti</a><a href="/last_inputs">Graficki prikaz zadnjih mjerenja</a></div></nav></body></html>

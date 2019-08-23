@@ -1,0 +1,13 @@
+.container {
+    position: relative;
+    display: table;
+    margin: auto;
+    padding-top: 50px;
+    border: 2px solid green;
+}
+.table {
+    border: 1px solid red;
+}
+th, td {
+    border: 1px solid black;
+}

@@ -6,6 +6,7 @@
 @import "./colors.css";
 @import "./navigation_bar.css";
 @import "./values.css";
+@import "./table.css";
 
 * {
   margin: 0;

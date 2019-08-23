@@ -2,13 +2,11 @@ extends ../../index.pug
 
 block body
     .container
-    table.table
-        tr
-            th Datum
-            th Gornji tlak
-            th Donji tlak
-    tbody
-        tr
-            td 22.08.2019.
-            td 120
-            td 80
+        table.table
+            tr
+                th Datum
+                th Gornji tlak
+                th Donji tlak
+        tbody
+            tr
+                td= sorted_data

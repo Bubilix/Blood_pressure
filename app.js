@@ -8,6 +8,7 @@ const config = require('config');
 const mongoose = require('mongoose');
 const InputValues = require('./api/models/inputValues');
 const validation = require('./middleware/validation');
+const sortingData = require('./middleware/sortingData');
 
 let database = false;
 let inputs = [];
@@ -57,7 +58,7 @@ app.post('/submit', (req, res, next) => {
 app.get('/input_new_value', (req, res, next) => {
     if (res) {
         res.render('./assets/pugs/extend_new_measurings.pug', {
-            nav_class_input: "active-nav",
+            nav_class_input: "active-nav1",
             nav_class_show: 'hidden'
         });
     } else {
@@ -67,7 +68,7 @@ app.get('/input_new_value', (req, res, next) => {
 app.get('/input_multiple_values', (req, res, next) => {
     if (res) {
         res.render('./assets/pugs/extend_multiple_new_measurings.pug', {
-            nav_class_input: "active-nav",
+            nav_class_input: "active-nav1",
             nav_class_show: 'hidden'
         });
     } else {
@@ -80,7 +81,7 @@ app.get('/average', (req, res) => {
         else {
             res.render('index', {
                 nav_class_input: "hidden",
-                nav_class_show: 'active-nav'
+                nav_class_show: 'active-nav2'
             });
             console.log(docs);
             }
@@ -90,12 +91,15 @@ app.get('/last_inputs', (req, res) => {
     InputValues.find({}, function(err, docs) {
         if (err) throw err;
         else {
+            const sortedData = sortingData(docs);
+            console.log(sortedData);
+            console.log(typeof sortedData[0].upperValue);
             res.render('./assets/pugs/extend_output_last_ten_inputs.pug', {
                 nav_class_input: "hidden",
-                nav_class_show: 'active-nav'
+                nav_class_show: 'active-nav2',
+                sorted_data: {id: '1'}
             });
-            console.log(docs.time);
-            }
+        }
     })
 });
 

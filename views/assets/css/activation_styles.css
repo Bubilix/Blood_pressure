@@ -4,8 +4,11 @@
 .nonactive-nav2 {
   top: 200px;
 }
-.active-nav {
+.active-nav1 {
   top: 80px;
+}
+.active-nav2 {
+  top: 0px;
 }
 .visible {
   visibility: visible;

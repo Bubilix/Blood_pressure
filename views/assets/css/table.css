@@ -1,13 +1,25 @@
 .container {
     position: relative;
     display: table;
+    top: 5%;
     margin: auto;
-    padding-top: 50px;
-    border: 2px solid green;
+    padding-top: 0;
+    border: 1px solid black;
+    background-image: linear-gradient(rgba(26, 35, 126, 0.3), rgba(106, 27, 154, 0.5));
+    box-shadow: 5px 5px 3px;
+    border-radius: 20px;
 }
-.table {
-    border: 1px solid red;
+table, th, td {
+    color: rgb(233, 216, 216);
+    text-align: center;
+}
+td, th {
+    padding: 3px 10px;
+}
+table {
+    border-collapse: collapse;
+    border-style: hidden;
 }
 th, td {
-    border: 1px solid black;
+    border: 2px solid black;
 }

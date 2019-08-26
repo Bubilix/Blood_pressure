@@ -16,7 +16,7 @@ const inputSchema = mongoose.Schema({
     },
     time: {
         type: Date,
-        default: Date.now    
+        default: Date.now
     }
 });
 

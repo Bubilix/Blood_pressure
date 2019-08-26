@@ -9,6 +9,8 @@ const mongoose = require('mongoose');
 const InputValues = require('./api/models/inputValues');
 const validation = require('./middleware/validation');
 const sortingData = require('./middleware/sortingData');
+const renderingData = require('./middleware/renderingData');
+const outputDataLimit = require('./middleware/outputDataLimit');
 
 let database = false;
 let inputs = [];
@@ -35,7 +37,6 @@ app.get('/', (req, res, next) => {
             nav_class_input: 'nonactive-nav1',
             nav_class_show: 'nonactive-nav2'
         });
-        console.log(inputs);
     } else {
         res.status(404).write('Page not found!');
     }
@@ -92,18 +93,12 @@ app.get('/last_inputs', (req, res) => {
         if (err) throw err;
         else {
             const sortedData = sortingData(docs);
-            let dataTime = []; let dataUpper = []; let dataLower= [];
-            for (let data in sortedData) {
-                dataTime.push(data.time);
-                dataUpper.push(data.upperValue);
-                dataLower.push(data.lowerValue);
-            }
-            console.log(sortedData);
-            console.log(typeof sortedData[0].upperValue);
+            const renderData = renderingData(sortedData);
+            const renderDataLimit = outputDataLimit(renderData, 10);
             res.render('./assets/pugs/extend_output_last_ten_inputs.pug', {
                 nav_class_input: "hidden",
                 nav_class_show: 'active-nav2',
-                sortedData: sortedData
+                sortData: renderDataLimit
             });
         }
     })

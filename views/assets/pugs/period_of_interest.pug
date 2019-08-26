@@ -1,0 +1,8 @@
+extends ../../index.pug
+
+block body
+    .input-field
+        form(action='/average')
+            input(type='text', name='period_begin', placeholder='', required='', autofocus='')
+            input(type='text', name='period_end', placeholder='', required='')
+            input(type='submit', value='Potvrdi unos')

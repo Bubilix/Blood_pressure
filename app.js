@@ -76,16 +76,29 @@ app.get('/input_multiple_values', (req, res, next) => {
         res.status(404).write('Page not found!');
     }
 });
+app.get('/period_of_interest', (req, res) => {
+    if (res) {
+        res.render('./assets/pugs/period_of_interest.pug', {
+            nav_class_input: "hidden",
+            nav_class_show: 'active-nav2'
+        });
+    } else {
+        res.status(404).write('Page not found!');
+    } 
+});
 app.get('/average', (req, res) => {
     InputValues.find({}, function(err, docs) {
         if (err) throw err;
         else {
-            res.render('index', {
+            const sortedData = sortingData(docs);
+            const renderData = renderingData(sortedData);
+            const renderDataLimit = outputDataLimit(renderData, 10);
+            res.render('./assets/pugs/average_values.pug', {
                 nav_class_input: "hidden",
-                nav_class_show: 'active-nav2'
+                nav_class_show: 'active-nav2',
+                sortData: renderDataLimit
             });
-            console.log(docs);
-            }
+        }
     })
 });
 app.get('/last_inputs', (req, res) => {

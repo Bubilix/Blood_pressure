@@ -1,13 +1,29 @@
-.container {
-    position: relative;
+.render_inputs {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+}
+.average_values {
+    text-align: center;
+    border: 1px solid black;
+    background-image: linear-gradient(rgba(26, 35, 126, 0.3), rgba(106, 27, 154, 0.5));
+    box-shadow: 5px 5px 3px;
+    border-radius: 20px;
+}
+.table_container {
     display: table;
-    top: 5%;
-    margin: auto;
     padding-top: 0;
     border: 1px solid black;
     background-image: linear-gradient(rgba(26, 35, 126, 0.3), rgba(106, 27, 154, 0.5));
     box-shadow: 5px 5px 3px;
     border-radius: 20px;
+}
+.last_ten_values_render {
+    text-align: center;
+    color: rgb(233, 216, 216);
+    font: 50%;
+    border-bottom: 2px solid black;
+    padding: 5px 0;
 }
 table, th, td {
     color: rgb(233, 216, 216);

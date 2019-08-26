@@ -96,7 +96,9 @@ app.get('/average', (req, res) => {
             res.render('./assets/pugs/average_values.pug', {
                 nav_class_input: "hidden",
                 nav_class_show: 'active-nav2',
-                sortData: renderDataLimit
+                sortData: renderDataLimit,
+                begin: req.query.period_begin,
+                end: req.query.period_end
             });
         }
     })
@@ -108,7 +110,7 @@ app.get('/last_inputs', (req, res) => {
             const sortedData = sortingData(docs);
             const renderData = renderingData(sortedData);
             const renderDataLimit = outputDataLimit(renderData, 10);
-            res.render('./assets/pugs/extend_output_last_ten_inputs.pug', {
+            res.render('./assets/pugs/output_with_table.pug', {
                 nav_class_input: "hidden",
                 nav_class_show: 'active-nav2',
                 sortData: renderDataLimit

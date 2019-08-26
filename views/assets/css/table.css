@@ -1,7 +1,10 @@
 .render_inputs {
-    border: 1px solid red;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    position: relative;
+    top: 5%;
+    width: 30%;
+    margin: auto;
 }
 .average_values {
     text-align: center;
@@ -35,6 +38,7 @@ td, th {
 table {
     border-collapse: collapse;
     border-style: hidden;
+    width: 100%
 }
 th, td {
     border: 2px solid black;

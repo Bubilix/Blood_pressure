@@ -1,0 +1,41 @@
+.input-field {
+    text-align: center;
+    border: 1px solid black;
+    background-image: linear-gradient(rgba(26, 35, 126, 0.3), rgba(106, 27, 154, 0.5));
+    box-shadow: 5px 5px 3px;
+    border-radius: 20px;
+    position: relative;
+    top: 5%;
+    width: 17%;
+    margin: auto;
+    padding-top: 7px;
+}
+.select-file {
+    padding: 0;
+}
+.select-file h2 {
+    padding: 5px 10px 10px 10px;
+    border-bottom: 2px solid black;
+    font-size: 100%;
+    font-weight: 700;
+    display: inline-block;
+    color: rgb(219, 196, 196);
+}
+.label input[type=file] {
+    display: none;
+}
+.label {
+    padding: 10px 5px 10px 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0 0 0;
+    color: rgb(226, 205, 205);
+}
+.label:hover {
+    background: linear-gradient(rgba(26, 35, 126, 0.7), rgba(106, 27, 154, 0.7));
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.label:active {
+    background: #CCF;
+}

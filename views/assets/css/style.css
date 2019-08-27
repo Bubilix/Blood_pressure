@@ -7,7 +7,7 @@
 @import "./navigation_bar.css";
 @import "./values.css";
 @import "./table.css";
-@import "./period_of_interest.css";
+@import "./input_frame.css";
 
 * {
   margin: 0;
@@ -32,3 +32,33 @@ h1 {
     display: inline;
     color: #EEEEEE;
 }
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+input {
+  text-align: center;
+  font-size: 75%;
+  height: 36px;
+  align-items: center;
+  margin: 7px auto;
+}
+input[type=submit] {
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+input[type=text] {
+ border-radius: 10px;
+ padding: 4px 5px;
+}
+input[type=date] {
+  border-radius: 10px;
+  padding: 4px 5px;
+ }
+ input[type=file] {
+  border-radius: 10px;
+  padding: 4px 5px;
+  margin: auto;
+  width: 100%;
+ }

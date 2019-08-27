@@ -1,0 +1,13 @@
+- if ((parseInt(number_to_show) > 0) && (parseInt(number_to_show) < 11))
+    .last_ten_values_render
+        h2 Posljednjih #{number_to_show} mjerenja
+    table
+        tr
+            th Datum
+            th Gornji tlak
+            th Donji tlak
+        each data in sortData
+            tr
+                td#left #{data.time}
+                td #{data.upperValue}
+                td#right #{data.lowerValue}

@@ -2,6 +2,7 @@
 //const debug = require('debug')('app:startup');
 const express = require('express');
 const app = express();
+const fs = require('fs');
 const bodyParser = require('body-parser');
 const path = require('path');
 const config = require('config');
@@ -76,6 +77,16 @@ app.get('/input_multiple_values', (req, res, next) => {
         res.status(404).write('Page not found!');
     }
 });
+app.get('/select_file', (req, res, next) => {
+    if (res) {
+        res.render('./assets/pugs/select_file.pug', {
+            nav_class_input: "active-nav1",
+            nav_class_show: 'hidden'
+        });
+    } else {
+        res.status(404).write('Page not found!');
+    }
+});
 app.get('/period_of_interest', (req, res) => {
     if (res) {
         res.render('./assets/pugs/period_of_interest.pug', {
@@ -92,13 +103,14 @@ app.get('/average', (req, res) => {
         else {
             const sortedData = sortingData(docs);
             const renderData = renderingData(sortedData);
-            const renderDataLimit = outputDataLimit(renderData, 10);
+            const renderDataLimit = outputDataLimit(renderData, req.query.number_to_show);
             res.render('./assets/pugs/average_values.pug', {
                 nav_class_input: "hidden",
                 nav_class_show: 'active-nav2',
                 sortData: renderDataLimit,
                 begin: req.query.period_begin,
-                end: req.query.period_end
+                end: req.query.period_end,
+                number_to_show: req.query.number_to_show
             });
         }
     })
@@ -117,6 +129,14 @@ app.get('/last_inputs', (req, res) => {
             });
         }
     })
+});
+app.get('/text_file_submit', (req, res) => {
+    if (res) {
+        const data = req.query.files;
+        res.send(req.route);
+    } else {
+        res.status(404).write('Page not found!');
+    } 
 });
 
 const port = config.get('Blood_pressure_app_port.port') || 3000;

@@ -8,10 +8,12 @@ const path = require('path');
 const config = require('config');
 const mongoose = require('mongoose');
 const InputValues = require('./api/models/inputValues');
-const validation = require('./middleware/validation');
-const sortingData = require('./middleware/sortingData');
-const renderingData = require('./middleware/renderingData');
-const outputDataLimit = require('./middleware/outputDataLimit');
+const validation = require('./modules/validation');
+const sortingData = require('./modules/sortingData');
+const renderingData = require('./modules/renderingData');
+const outputDataLimit = require('./modules/outputDataLimit');
+const handleFileSelect = require('./modules/handleFileSelect');
+
 
 let database = false;
 let inputs = [];

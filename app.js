@@ -8,11 +8,11 @@ const path = require('path');
 const config = require('config');
 const mongoose = require('mongoose');
 const InputValues = require('./api/models/inputValues');
-const validation = require('./modules/validation');
-const sortingData = require('./modules/sortingData');
-const renderingData = require('./modules/renderingData');
-const outputDataLimit = require('./modules/outputDataLimit');
-const handleFileSelect = require('./modules/handleFileSelect');
+const validation = require('./api/modules/validation');
+const sortingData = require('./api/modules/sortingData');
+const renderingData = require('./api/modules/renderingData');
+const outputDataLimit = require('./api/modules/outputDataLimit');
+//const handleFileSelect = require('./api/modules/handleFileSelect');
 
 
 let database = false;
@@ -34,6 +34,10 @@ app.use(express.static(path.join(__dirname, 'views', 'assets', 'css')));
 app.use(bodyParser.urlencoded({ extended: 'true' }));
 app.use(bodyParser.json());
 
+
+//users inputs
+
+//welcome screen
 app.get('/', (req, res, next) => {
     if (res) {
         res.render('index', {
@@ -44,6 +48,7 @@ app.get('/', (req, res, next) => {
         res.status(404).write('Page not found!');
     }
 });
+//input data to the database
 app.post('/submit', (req, res, next) => {
     const input = new InputValues({
         _id: new mongoose.Types.ObjectId(),
@@ -59,6 +64,7 @@ app.post('/submit', (req, res, next) => {
     }
     res.redirect('/');
 });
+//input new values
 app.get('/input_new_value', (req, res, next) => {
     if (res) {
         res.render('./assets/pugs/extend_new_measurings.pug', {
@@ -69,6 +75,7 @@ app.get('/input_new_value', (req, res, next) => {
         res.status(404).write('Page not found!');
     }
 });
+//input new multiple values
 app.get('/input_multiple_values', (req, res, next) => {
     if (res) {
         res.render('./assets/pugs/extend_multiple_new_measurings.pug', {
@@ -79,6 +86,7 @@ app.get('/input_multiple_values', (req, res, next) => {
         res.status(404).write('Page not found!');
     }
 });
+//input values from external text file
 app.get('/select_file', (req, res, next) => {
     if (res) {
         res.render('./assets/pugs/select_file.pug', {
@@ -89,6 +97,19 @@ app.get('/select_file', (req, res, next) => {
         res.status(404).write('Page not found!');
     }
 });
+//upload data from external text file to the database
+app.get('/text_file_submit', (req, res) => {
+    if (res) {
+        const data = req.query.files;
+        res.send(req.route);
+    } else {
+        res.status(404).write('Page not found!');
+    } 
+});
+
+//UI outputs
+
+//input time period of interest to show values for the input time frame
 app.get('/period_of_interest', (req, res) => {
     if (res) {
         res.render('./assets/pugs/period_of_interest.pug', {
@@ -99,6 +120,7 @@ app.get('/period_of_interest', (req, res) => {
         res.status(404).write('Page not found!');
     } 
 });
+//show average values in the time frame and last few values input underneath
 app.get('/average', (req, res) => {
     InputValues.find({}, function(err, docs) {
         if (err) throw err;
@@ -117,6 +139,7 @@ app.get('/average', (req, res) => {
         }
     })
 });
+//show graphically values changes over time
 app.get('/last_inputs', (req, res) => {
     InputValues.find({}, function(err, docs) {
         if (err) throw err;
@@ -131,14 +154,6 @@ app.get('/last_inputs', (req, res) => {
             });
         }
     })
-});
-app.get('/text_file_submit', (req, res) => {
-    if (res) {
-        const data = req.query.files;
-        res.send(req.route);
-    } else {
-        res.status(404).write('Page not found!');
-    } 
 });
 
 const port = config.get('Blood_pressure_app_port.port') || 3000;

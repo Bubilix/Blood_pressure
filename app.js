@@ -7,22 +7,26 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const config = require('config');
 const mongoose = require('mongoose');
-const InputValues = require('./api/models/inputValues');
+const welcome_screen = require('./api/routers/welcome_screen');
+const new_values = require('./api/routers/new_values');
+const new_multiple_values = require('./api/routers/new_multiple_values');
+const select_file = require('./api/routers/select_file');
+const period_of_interest = require('./api/routers/period_of_interest');
+const average = require('./api/routers/average');
+const graphics = require('./api/routers/graphics');
 const validation = require('./api/modules/validation');
-const sortingData = require('./api/modules/sortingData');
-const renderingData = require('./api/modules/renderingData');
-const outputDataLimit = require('./api/modules/outputDataLimit');
+// const sortingData = require('./api/modules/sortingData');
+// const renderingData = require('./api/modules/renderingData');
+// const outputDataLimit = require('./api/modules/outputDataLimit');
+const InputValues = require('./api/models/inputValues');
 //const handleFileSelect = require('./api/modules/handleFileSelect');
 
 
-let database = false;
-let inputs = [];
 const url = 'mongodb+srv://Bubilix:' + config.get('db.DBpassword') + '@clusterbubilix-qkwah.mongodb.net/test?retryWrites=true&w=majority';
 mongoose.connect(url, { useNewUrlParser: true }, function(err, db) {
     if (err) {
         console.log('Could not connect to MongoDB.', err)
     } else {
-        database = true;
         console.log('Connected to MongoDB...');
     }
 });
@@ -37,66 +41,16 @@ app.use(bodyParser.json());
 
 //users inputs
 
-//welcome screen
-app.get('/', (req, res, next) => {
-    if (res) {
-        res.render('index', {
-            nav_class_input: 'nonactive-nav1',
-            nav_class_show: 'nonactive-nav2'
-        });
-    } else {
-        res.status(404).write('Page not found!');
-    }
-});
-//input data to the database
-app.post('/submit', (req, res, next) => {
-    const input = new InputValues({
-        _id: new mongoose.Types.ObjectId(),
-        upperValue: req.body.upperValue,
-        lowerValue: req.body.lowerValue
-    });
-    if (database) {
-        input.save(function(err, db) {
-            if (err) throw err;
-        });
-    } else {
-        inputs.push(input);
-    }
-    res.redirect('/');
-});
+//welcome screen and input data to the database
+app.use('/', welcome_screen);
+
 //input new values
-app.get('/input_new_value', (req, res, next) => {
-    if (res) {
-        res.render('./assets/pugs/extend_new_measurings.pug', {
-            nav_class_input: "active-nav1",
-            nav_class_show: 'hidden'
-        });
-    } else {
-        res.status(404).write('Page not found!');
-    }
-});
+app.use('/input_new_value', new_values);
+
 //input new multiple values
-app.get('/input_multiple_values', (req, res, next) => {
-    if (res) {
-        res.render('./assets/pugs/extend_multiple_new_measurings.pug', {
-            nav_class_input: "active-nav1",
-            nav_class_show: 'hidden'
-        });
-    } else {
-        res.status(404).write('Page not found!');
-    }
-});
+app.use('/input_multiple_values', new_multiple_values);
 //input values from external text file
-app.get('/select_file', (req, res, next) => {
-    if (res) {
-        res.render('./assets/pugs/select_file.pug', {
-            nav_class_input: "active-nav1",
-            nav_class_show: 'hidden'
-        });
-    } else {
-        res.status(404).write('Page not found!');
-    }
-});
+app.use('/select_file', select_file);
 //upload data from external text file to the database
 app.get('/text_file_submit', (req, res) => {
     if (res) {
@@ -110,51 +64,11 @@ app.get('/text_file_submit', (req, res) => {
 //UI outputs
 
 //input time period of interest to show values for the input time frame
-app.get('/period_of_interest', (req, res) => {
-    if (res) {
-        res.render('./assets/pugs/period_of_interest.pug', {
-            nav_class_input: "hidden",
-            nav_class_show: 'active-nav2'
-        });
-    } else {
-        res.status(404).write('Page not found!');
-    } 
-});
+app.use('/period_of_interest', period_of_interest);
 //show average values in the time frame and last few values input underneath
-app.get('/average', (req, res) => {
-    InputValues.find({}, function(err, docs) {
-        if (err) throw err;
-        else {
-            const sortedData = sortingData(docs);
-            const renderData = renderingData(sortedData);
-            const renderDataLimit = outputDataLimit(renderData, req.query.number_to_show);
-            res.render('./assets/pugs/average_values.pug', {
-                nav_class_input: "hidden",
-                nav_class_show: 'active-nav2',
-                sortData: renderDataLimit,
-                begin: req.query.period_begin,
-                end: req.query.period_end,
-                number_to_show: req.query.number_to_show
-            });
-        }
-    })
-});
+app.use('/average', average);
 //show graphically values changes over time
-app.get('/last_inputs', (req, res) => {
-    InputValues.find({}, function(err, docs) {
-        if (err) throw err;
-        else {
-            const sortedData = sortingData(docs);
-            const renderData = renderingData(sortedData);
-            const renderDataLimit = outputDataLimit(renderData, 10);
-            res.render('./assets/pugs/output_with_table.pug', {
-                nav_class_input: "hidden",
-                nav_class_show: 'active-nav2',
-                sortData: renderDataLimit
-            });
-        }
-    })
-});
+app.use('/last_inputs', graphics);
 
 const port = config.get('Blood_pressure_app_port.port') || 3000;
 app.listen(port, () => { console.log(`Listening on the port ${port}`) });

@@ -15,10 +15,6 @@ const period_of_interest = require('./api/routers/period_of_interest');
 const average = require('./api/routers/average');
 const graphics = require('./api/routers/graphics');
 const validation = require('./api/modules/validation');
-// const sortingData = require('./api/modules/sortingData');
-// const renderingData = require('./api/modules/renderingData');
-// const outputDataLimit = require('./api/modules/outputDataLimit');
-const InputValues = require('./api/models/inputValues');
 //const handleFileSelect = require('./api/modules/handleFileSelect');
 
 
@@ -43,10 +39,8 @@ app.use(bodyParser.json());
 
 //welcome screen and input data to the database
 app.use('/', welcome_screen);
-
 //input new values
 app.use('/input_new_value', new_values);
-
 //input new multiple values
 app.use('/input_multiple_values', new_multiple_values);
 //input values from external text file
@@ -54,11 +48,10 @@ app.use('/select_file', select_file);
 //upload data from external text file to the database
 app.get('/text_file_submit', (req, res) => {
     if (res) {
-        const data = req.query.files;
-        res.send(req.route);
+        res.send(req.body);
     } else {
         res.status(404).write('Page not found!');
-    } 
+    }
 });
 
 //UI outputs

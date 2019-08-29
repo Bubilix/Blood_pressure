@@ -2,7 +2,7 @@ extends ../../index.pug
 
 block body
     .input-field
-        form.select-file(action='/text_file_submit')
+        form.select-file(action='/text_file_submit', method='post', enctype='multipart/form-data')
             h2 Oznacite tekstualnu datoteku iz koje zelite unijeti mjerenja
             label.label(for='fileupload', accept='text') Odaberite datoteku
                 input(type='file', name='fileupload', id='fileupload', onchange=handleFileSelect, required='')

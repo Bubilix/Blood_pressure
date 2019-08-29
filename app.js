@@ -15,6 +15,7 @@ const period_of_interest = require('./api/routers/period_of_interest');
 const average = require('./api/routers/average');
 const graphics = require('./api/routers/graphics');
 const validation = require('./api/modules/validation');
+const multer = require('multer');
 //const handleFileSelect = require('./api/modules/handleFileSelect');
 
 
@@ -34,6 +35,22 @@ app.use(express.static(path.join(__dirname, 'views', 'assets', 'css')));
 app.use(bodyParser.urlencoded({ extended: 'true' }));
 app.use(bodyParser.json());
 
+const storage = multer.diskStorage({
+    destination: './api/uploads/',
+    filename: function(req, file,cb) {
+        cb(null, file.originalname);
+    }
+});
+const fileFilter = (req, res, cb) => {
+    if (file.mimetype === 'text/*') {
+        cb(null, true);
+    }
+};
+const upload = multer({
+    storage: storage,
+    fileFilter: fileFilter
+});
+
 
 //users inputs
 
@@ -46,12 +63,8 @@ app.use('/input_multiple_values', new_multiple_values);
 //input values from external text file
 app.use('/select_file', select_file);
 //upload data from external text file to the database
-app.get('/text_file_submit', (req, res) => {
-    if (res) {
-        res.send(req.body);
-    } else {
-        res.status(404).write('Page not found!');
-    }
+app.post('/text_file_submit', upload.single('fileupload'), (req, res) => {
+    console.log(req.file);
 });
 
 //UI outputs

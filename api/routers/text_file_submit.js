@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const browserSupport = require('../middleware/browserSupport');
+const inputTextParser = require('../modules/inputTextParser');
 const fs = require('fs');
 
 const storage = multer.diskStorage({
@@ -18,14 +18,18 @@ const upload = multer({ storage: storage })
 router.post('/', upload.single('fileupload'), (req, res, next) => {
     if (res) {
       console.log(req.file);
-      res.render('./assets/pugs/text_file_submit.pug', {
+      fs.readFile(req.file.path, 'utf-8', (err, data) => {
+        if (err) throw err;
+        res.render('./assets/pugs/text_file_submit.pug', {
           nav_class_input: 'active-nav1',
           nav_class_show: 'hidden',
-          input_text: fs.readFile('../uploads/tlak.txt')
+          input_text: JSON.stringify(inputTextParser(data))
+          })
+        console.log(inputTextParser(data).upperValue);
       })
     } else {
-      res.status(404).send('Nothing uploaded.');
-    }
+      res.status(404).send('No input file found!')
+    };      
 });
 
 module.exports = router;

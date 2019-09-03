@@ -6,6 +6,7 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 const InputValues = require('../models/inputValues');
 const date_converter = require('../modules/date_converter');
+const mongoose_connection = require('../middleware/mongoose_connection');
 
 router.get('/', (req, res, next) => {
     if (res) {
@@ -38,6 +39,7 @@ router.post('/', upload.single('fileupload'), (req, res, next) => {
         if (err) throw err;
         //parse input data in object of dates, upperValues and lowerValues
         const inputs = inputTextParser(data);
+        cons
         for (i = 0; i < inputs.dates.length; i++) {
           //populate new database input
           const input = new InputValues({
@@ -46,22 +48,21 @@ router.post('/', upload.single('fileupload'), (req, res, next) => {
             upperValue: inputs.upperValue[i],
             lowerValue: inputs.lowerValue[i]
           });
-          //save database changes
-          input.save(function(err, db) {
-              if (err) throw err;
-          });
-        }
+        };
+        //delete uploaded file, so that uploads folder is again empty (data are loaded in the database and are not longer needed)
+        fs.unlink(req.file.path, (err) => {
+          if (err) throw err;
+        });
+        res.locals.input = input;
       });
-      //reroute to the welcome page
-      res.redirect('/');
       //delete uploaded file, so that uploads folder is again empty (data are loaded in the database and are not longer needed)
-      fs.unlink(req.file.path, (err) => {
-        if (err) throw err;
-      })
+      // fs.unlink(req.file.path, (err) => {
+      //   if (err) throw err;
+      // })
     } else {
       //if nothing loaded alert user
       res.status(404).send('No input file found!')
     };      
-});
+}, mongoose_connection);
 
 module.exports = router;

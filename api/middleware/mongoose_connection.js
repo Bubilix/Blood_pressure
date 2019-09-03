@@ -13,19 +13,19 @@ module.exports = function mongoose_connection(req, res, next) {
             console.log('Could not connect to MongoDB.', err)
         } else {
             console.log('Connected to MongoDB...');
-            console.log(typeof res.locals.input);
+            const input = res.locals.input;
             db.collection(collectionName).findOne({}, function(err, res) {
                 if (err) {
-                    console.log(res.locals.input);
                     db.createCollection(collectionName);
-                    db.collection(collectionName).insertOne(res.locals.input, function(err, db) {
+                    db.collection(collectionName).insertOne(input, function(err, db) {
                         if (err) throw err;
                     });
                 } else {
-                    db.collection(collectionName).insertOne(res.locals.input, function(err, db) {
+                    db.collection(collectionName).insertOne(input, function(err, db) {
                         if (err) throw err;
                     });
                 }
+                res.redirect('/');
             })
         }
     });

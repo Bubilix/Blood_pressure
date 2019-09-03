@@ -5,6 +5,7 @@ const inputTextParser = require('../modules/inputTextParser');
 const fs = require('fs');
 const mongoose = require('mongoose');
 const InputValues = require('../models/inputValues');
+const date_converter = require('../modules/date_converter');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -21,25 +22,17 @@ router.post('/', upload.single('fileupload'), (req, res, next) => {
     if (res) {
       fs.readFile(req.file.path, 'utf-8', (err, data) => {
         if (err) throw err;
-        // res.render('./assets/pugs/text_file_submit.pug', {
-        //   nav_class_input: 'active-nav1',
-        //   nav_class_show: 'hidden',
-        //   input_text: JSON.stringify(meanOfAllInputs(data))
-        //   })
         const inputs = inputTextParser(data);
-        console.log(inputs);
         for (i = 0; i < inputs.dates.length; i++) {
           const input = new InputValues({
             _id: new mongoose.Types.ObjectId(),
-            time: Date.parse(inputs.dates[i]),
+            time: date_converter(inputs.dates[i]),
             upperValue: inputs.upperValue[i],
             lowerValue: inputs.lowerValue[i]
           });
-          console.log(inputs.dates[i]);
-          console.log(input);
-          // input.save(function(err, db) {
-          //   if (err) throw err;
-          // });
+          input.save(function(err, db) {
+              if (err) throw err;
+          });
         }
       })
       res.redirect('/');

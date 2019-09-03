@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const InputValues = require('../models/inputValues');
 const config = require('config');
 
-module.exports = function mongoose_connection() {
+module.exports = function mongoose_connection(req, res, next) {
     const databaseName = "firstDatabase";
     const collectionName = "firstCollection";
     const url = 'mongodb+srv://Bubilix:' + config.get('db.DBpassword') + '@clusterbubilix-qkwah.mongodb.net/' + databaseName + '?retryWrites=true&w=majority';
@@ -13,9 +13,10 @@ module.exports = function mongoose_connection() {
             console.log('Could not connect to MongoDB.', err)
         } else {
             console.log('Connected to MongoDB...');
-            console.log(res.locals.input);
+            console.log(typeof res.locals.input);
             db.collection(collectionName).findOne({}, function(err, res) {
                 if (err) {
+                    console.log(res.locals.input);
                     db.createCollection(collectionName);
                     db.collection(collectionName).insertOne(res.locals.input, function(err, db) {
                         if (err) throw err;

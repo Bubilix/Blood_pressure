@@ -22,7 +22,6 @@ router.post('/', (req, res, next) => {
         lowerValue: req.body.lowerValue
     });
     res.locals.input = input;
-    console.log(res.locals.input);
     next();
     //const databaseName = "firstDatabase";
     //const collectionName = "firstCollection";

@@ -2,7 +2,6 @@
 //const debug = require('debug')('app:startup');
 const express = require('express');
 const app = express();
-const fs = require('fs');
 const bodyParser = require('body-parser');
 const path = require('path');
 const config = require('config');
@@ -17,15 +16,6 @@ const average = require('./api/routers/average');
 const graphics = require('./api/routers/graphics');
 const validation = require('./api/modules/validation');
 
-
-const url = 'mongodb+srv://Bubilix:' + config.get('db.DBpassword') + '@clusterbubilix-qkwah.mongodb.net/test?retryWrites=true&w=majority';
-mongoose.connect(url, { useNewUrlParser: true }, function(err, db) {
-    if (err) {
-        console.log('Could not connect to MongoDB.', err)
-    } else {
-        console.log('Connected to MongoDB...');
-    }
-});
 
 //show on screen .pug files from ./views folder
 app.set('views', './views');

@@ -1,0 +1,24 @@
+.login_form {
+    margin: auto;
+    border: 1px solid black;
+    background-image: linear-gradient(rgba(26, 35, 126, 0.3), rgba(106, 27, 154, 0.5));
+    box-shadow: 5px 5px 3px;
+    border-radius: 20px;
+    width: 400px;
+    padding: 5px 15px;
+}
+.current_user {
+    display: flex;
+    flex-direction: column;
+}
+.submit_new_user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.current_user > input {
+    width: 60%;
+}
+.submit_new_user > input {
+    min-width: 100px;
+}

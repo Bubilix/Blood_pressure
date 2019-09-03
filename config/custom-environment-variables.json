@@ -4,5 +4,6 @@
     },
     "Blood_pressure_app_port": {
         "port": "PORT"
-    }
+    },
+    "jwtPrivateKey": "Blood_pressure_jwtPrivateKey"
 }

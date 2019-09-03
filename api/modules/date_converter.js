@@ -4,5 +4,6 @@ module.exports = function date_converter(date) {
     const day = date_array[0];
     const month = months[date_array[1] - 1];
     const year = date_array[2];
+    //export date string in form "MM DD, YYYY 08:00:00 GMT" 
     return (month + " " + day + ", " + year + " 08:00:00 GMT");
 }

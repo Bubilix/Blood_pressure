@@ -28,14 +28,14 @@ mongoose.connect(url, { useNewUrlParser: true }, function(err, db) {
     }
 });
 
-
+//show on screen .pug files from ./views folder
 app.set('views', './views');
 app.set('view engine', 'pug');
+//provide access to .css files to graphicaly shape .pugs
 app.use(express.static(path.join(__dirname, 'views', 'assets', 'css')));
+//req and res body parsing
 app.use(bodyParser.urlencoded({ extended: 'true' }));
 app.use(bodyParser.json());
-
-
 
 //users inputs
 
@@ -59,5 +59,6 @@ app.use('/average', average);
 //show graphically values changes over time
 app.use('/last_inputs', graphics);
 
+//listening on port for browser connection
 const port = config.get('Blood_pressure_app_port.port') || 3000;
 app.listen(port, () => { console.log(`Listening on the port ${port}`) });

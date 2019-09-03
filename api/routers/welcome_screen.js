@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const InputValues = require('../models/inputValues');
-const config = require('config');
 const mongoose_connection = require('../middleware/mongoose_connection');
+const saveDBCollection = require('../middleware/saveDBCollection');
 
 router.get('/', (req, res, next) => {
     if (res) {
@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
         res.status(404).write('Page not found!');
     }
 });
-router.post('/', (req, res, next) => {
+router.post('/', mongoose_connection, (req, res, next) => {
     const input = new InputValues({
         _id: new mongoose.Types.ObjectId(),
         upperValue: req.body.upperValue,
@@ -23,30 +23,6 @@ router.post('/', (req, res, next) => {
     });
     res.locals.input = input;
     next();
-    //const databaseName = "firstDatabase";
-    //const collectionName = "firstCollection";
-    // const url = 'mongodb+srv://Bubilix:' + config.get('db.DBpassword') + '@clusterbubilix-qkwah.mongodb.net/' + databaseName + '?retryWrites=true&w=majority';
-    // mongoose.connect(url, { useNewUrlParser: true }, function(err, db) {
-    //     if (err) {
-    //         console.log('Could not connect to MongoDB.', err)
-    //     } else {
-    //         console.log('Connected to MongoDB...');
-    //         db.collection(collectionName).findOne({}, function(err, res) {
-    //             if (err) {
-    //                 db.createCollection(collectionName);
-    //                 db.collection(collectionName).insertOne(input, function(err, db) {
-    //                     if (err) throw err;
-    //                 });
-    //             } else {
-    //                 db.collection(collectionName).insertOne(input, function(err, db) {
-    //                     if (err) throw err;
-    //                 });
-    //             }
-    //         })
-    //     }
-    // });
-
-    //res.redirect('/');
-}, mongoose_connection);
+}, saveDBCollection);
 
 module.exports = router;

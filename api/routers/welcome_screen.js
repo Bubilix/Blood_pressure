@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const InputValues = require('../models/inputValues');
 const mongoose_connection = require('../middleware/mongoose_connection');
 const saveDBCollection = require('../middleware/saveDBCollection');
 
@@ -21,7 +20,7 @@ router.post('/', mongoose_connection, (req, res, next) => {
         upperValue: req.body.upperValue,
         lowerValue: req.body.lowerValue
     });
-    res.locals.input = input;
+    res.locals.input = [input];
     next();
 }, saveDBCollection);
 

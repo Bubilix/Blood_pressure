@@ -11,6 +11,7 @@ module.exports = function mongoose_connection(req, res, next) {
         } else {
             console.log('Connected to MongoDB...');
             res.locals.db = db;
+            res.locals.databaseName = databaseName;
             res.locals.collectionName = collectionName;
             next();
         }

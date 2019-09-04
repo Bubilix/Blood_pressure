@@ -2,7 +2,6 @@ const inputTextParser = require('./inputTextParser');
 
 module.exports = function meanOfAllInputss(input_array) {
     let Avg = [];
-    console.log(inputTextParser(input_array));
     //assign average upper and lower value to the Avg array
     Avg[0] = calcAvg(inputTextParser(input_array).upperValue);
     Avg[1] = calcAvg(inputTextParser(input_array).lowerValue);

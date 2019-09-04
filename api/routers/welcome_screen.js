@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const InputValues = require('../models/inputValues');
 const mongoose_connection = require('../middleware/mongoose_connection');
 const saveDBCollection = require('../middleware/saveDBCollection');
 

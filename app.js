@@ -5,7 +5,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 const config = require('config');
-const mongoose = require('mongoose');
 const login = require('./api/routers/login');
 const welcome_screen = require('./api/routers/welcome_screen');
 const new_values = require('./api/routers/new_values');

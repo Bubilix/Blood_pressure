@@ -5,7 +5,7 @@ block body
         form(action='/welcome')
             .current_user
                 input(type='text', name='username', value='', required='', autofocus='')
-                input(type='password', name='password', value='', minlength='8', pattern='([0-9]{1,}|[A-Z]{1,}|[a-z]{1,})', required='')
+                input(type='password', name='password', value='', minlength='8', pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$', required='')
             .submit_new_user
                 input(type='submit', name='submit_user', value='Potvrdi')
                 input(type='submit', value='Unesi podatke o novom korisniku')

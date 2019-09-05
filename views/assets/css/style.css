@@ -53,6 +53,10 @@ input[type=text] {
  border-radius: 10px;
  padding: 4px 5px;
 }
+input[type=number] {
+  border-radius: 10px;
+  padding: 4px 5px;
+}
 input[type=date] {
   border-radius: 10px;
   padding: 4px 5px;

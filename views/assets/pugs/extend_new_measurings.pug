@@ -16,7 +16,7 @@ block body
         // textarea
         form
             // input field
-            input(type='text', form="submitInputs", name='upperValue', placeholder='Unesi gornji tlak', required='', autofocus='')
+            input(type='number', min="1", max="400", form="submitInputs", name='upperValue', placeholder='Unesi gornji tlak', required='', autofocus='')
         // blood lower pressure input form
         div.blood-pressure-input
             // title description
@@ -27,7 +27,7 @@ block body
                 h2 Donji tlak
             // textarea
         form.lower-form
-            input(type='text', form="submitInputs", name='lowerValue', placeholder='Unesi donji tlak', required='')
+            input(type='number', min="1", max="400", form="submitInputs", name='lowerValue', placeholder='Unesi donji tlak', required='')
         // submit input data
         form.formFormat(id="submitInputs" action="/welcome" method="post")
             div

@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
     if (res) {
-        res.render('./assets/pugs/extend_new_measurings.pug', {
+        res.render('./assets/pugs/input_new_value.pug', {
             nav_class_input: "active-nav1",
             nav_class_show: 'hidden'
         });

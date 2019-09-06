@@ -2,18 +2,18 @@ const mongoose = require('mongoose');
 
 const inputSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    upperValue: {
-        type: Number,
+    username: {
+        type: string,
         required: true
     },
-    lowerValue: {
-        type: Number,
+    password: {
+        type: string,
         required: true
     },
-    time: {
+    lastLogin: {
         type: Date,
         default: Date.now
     }
 });
 
-module.exports = mongoose.model('InputValues', inputSchema);
+module.exports = mongoose.model('Users', inputSchema);

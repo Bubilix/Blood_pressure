@@ -6,7 +6,7 @@ const checkUser = require('../middleware/checkUser');
 
 router.get('/', (req, res, next) => {
     if (res) {
-        res.render('./assets/pugs/login', {
+        res.render('./assets/pugs/login.pug', {
             nav_class_input: 'hidden',
             nav_class_show: 'hidden'
         });
@@ -20,6 +20,7 @@ router.post('/', (req,res,next) => {
         username: req.body.username,
         password: req.body.password
     });
+    console.log(req.body.username);
     res.locals.collectionName = "Users";
     res.locals.user = user;
     next();

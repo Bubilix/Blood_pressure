@@ -16,6 +16,10 @@
     flex-direction: row;
     justify-content: space-between;
 }
+.current_user > h2 {
+    color: rgb(221, 201, 201);
+    margin: auto;
+}
 .current_user > input {
     width: 60%;
 }

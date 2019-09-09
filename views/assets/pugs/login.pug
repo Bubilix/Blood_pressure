@@ -2,13 +2,15 @@ extends ../../index.pug
 
 block body
     .login_form
-        form(action='/' method='post')
+        form(id='username_password_input', action='/' method='post')
             .current_user
+                h2 Username
                 input(type='text', name='username', value='', pattern='^(?=.*[a-zA-Z])(?=.*[a-z]).{6,15}$', required='', autofocus='')
-                input(type='password', name='password', value='', pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$', required='')
+                h2 Password
+                input(type='password', name='password', pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$', required autocomplete='off')
             .submit_new_user
-                input(type='submit', name='submit_user', value='Potvrdi')
+                input(type='submit', name='submit_user', value='Potvrdi', form='username_password_input')
                 input(type='submit', value='Unesi novog korisnika')
             .user_not_found
-                body content
+                body
 

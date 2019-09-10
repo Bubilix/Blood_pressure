@@ -1,24 +1,28 @@
 const encrypt = require('../modules/encrypting');
 const bcrypt = require('bcrypt');
 
-module.exports = function saveDBCollection(req, res, next) {
+module.exports = function checkUser(req, res, next) {
     const db = res.locals.db;
     const user = res.locals.user;
     const collectionName = res.locals.collectionName;
     db.collection(collectionName).find().toArray(function(err, listOfAllUsers) {
         if (err) {
-            db.createCollection(collectionName);
-            user.password = encrypt(user.password);
-            db.collection(collectionName).insertOne(user, function(err, db) {
-                if (err) throw err;
-            });
+            res.status(400).send('Nista nije pronadeno na ovoj stranici.');
         } else {
-            for (let member in listOfAllUsers) {
-                if (member.username === user.username) {                    
-                    user.password = encrypt(user.password);
-                    bcrypt.compare(user.password, member.password);
-                }
-            }
+            if (listOfAllUsers.length === 0) {
+                encrypt(user);
+                console.log(user.password);
+                db.collection(collectionName).insertOne(user, function(err, db) {
+                    if (err) throw err;
+                });
+            } else {
+                console.log(user.username);
+                db.collection(collectionName).find().forEach(function(doc) {
+                    if (doc.username === user.username) {
+                        console.log('Great!');
+                    }
+                });
+            }           
         }
     });
     res.redirect('/welcome');

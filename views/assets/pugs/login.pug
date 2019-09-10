@@ -7,7 +7,7 @@ block body
                 h2 Username
                 input(type='text', name='username', value='', pattern='^(?=.*[a-zA-Z])(?=.*[a-z]).{6,15}$', required='', autofocus='')
                 h2 Password
-                input(type='password', name='password', pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$', required autocomplete='off')
+                input(type='password', name='password', pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}', title='Minimum 1 capital letter, one lower case letter and one number are required and password should have between 8 and 20 characters', required autocomplete='off')
             .submit_new_user
                 input(type='submit', name='submit_user', value='Potvrdi', form='username_password_input')
                 input(type='submit', value='Unesi novog korisnika')

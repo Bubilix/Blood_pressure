@@ -21,7 +21,7 @@ router.post('/', mongoose_connection, (req, res, next) => {
         upperValue: req.body.upperValue,
         lowerValue: req.body.lowerValue
     });
-    res.locals.input = input;
+    res.locals.input = [input];
     next();
 }, saveDBCollection);
 

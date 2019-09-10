@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
 const Users = require('../models/users');
 const mongoose_connection = require('../middleware/mongoose_connection');
 const checkUser = require('../middleware/checkUser');
+const bcrypt = require('bcrypt');
 
 router.get('/', (req, res, next) => {
     if (res) {
@@ -15,15 +17,16 @@ router.get('/', (req, res, next) => {
     }
 });
 router.post('/', (req,res,next) => {
+    // bcrypt.hash(req.body.password, 10).then(function(hash) {
+    //     console.log(hash);
     const user = new Users({
         _id: new mongoose.Types.ObjectId(),
         username: req.body.username,
         password: req.body.password
     });
-    console.log(req.body.username);
     res.locals.collectionName = "Users";
     res.locals.user = user;
-    next();
+    next();    
 }, mongoose_connection, checkUser);
 
 module.exports = router;

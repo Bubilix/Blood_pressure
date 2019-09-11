@@ -13,5 +13,5 @@ module.exports = function saveDBCollection(req, res, next) {
             }
         };
     })
-    res.redirect('/');
+    res.redirect('/welcome');
 }

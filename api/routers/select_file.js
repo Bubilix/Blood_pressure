@@ -39,7 +39,8 @@ router.post('/', upload.single('fileupload'), (req, res, next) => {
       fs.readFile(req.file.path, 'utf-8', (err, data) => {
         if (err) throw err;
         //parse input data in object of dates, upperValues and lowerValues
-        res.locals.inputs = inputTextParser(data);
+        const inputs = inputTextParser(data);
+        let inputArray = [];
         //delete uploaded file, so that uploads folder is again empty (data are loaded in the database and are not longer needed)
         fs.unlink(req.file.path, (err) => {
           if (err) throw err;
@@ -52,8 +53,9 @@ router.post('/', upload.single('fileupload'), (req, res, next) => {
             upperValue: inputs.upperValue[i],
             lowerValue: inputs.lowerValue[i]
           });
+          inputArray.push(input);
         };
-        res.locals.input = input;
+        res.locals.input = inputArray;
         next();
       });
     } else {

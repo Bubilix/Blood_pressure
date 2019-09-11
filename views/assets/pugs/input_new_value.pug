@@ -25,11 +25,11 @@ block body
                     h3.red-transparent 120
                     h3.blue 80
                 h2 Donji tlak
-            // textarea
+        // textarea
         form.lower-form
             input(type='number', min="1", max="400", form="submitInputs", name='lowerValue', placeholder='Unesi donji tlak', required='')
         // submit input data
-        form.formFormat(id="submitInputs" action="/welcome" method="post")
-            div
-                input(type='submit', value='Pohrani uneseno mjerenje')
+        form.formFormat(id="submitInputs")
             block content
+            div
+                input(type='submit' formaction='welcome' value='Pohrani prosjek unesenih mjerenja' method="post")

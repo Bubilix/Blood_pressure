@@ -39,23 +39,21 @@ router.post('/', upload.single('fileupload'), (req, res, next) => {
       fs.readFile(req.file.path, 'utf-8', (err, data) => {
         if (err) throw err;
         //parse input data in object of dates, upperValues and lowerValues
-        const inputs = inputTextParser(data);
-        let inputsArray = [];
-        for (i = 0; i < inputs.dates.length; i++) {
-          //populate new database input
-          const input = new InputValues({
-            _id: new mongoose.Types.ObjectId(),
-            time: Date.parse(date_converter(inputs.dates[i])),
-            upperValue: inputs.upperValue[i],
-            lowerValue: inputs.lowerValue[i]
-          });
-          inputsArray.push(input);
-        };
-        res.locals.input = inputsArray;
+        res.locals.inputs = inputTextParser(data);
         //delete uploaded file, so that uploads folder is again empty (data are loaded in the database and are not longer needed)
         fs.unlink(req.file.path, (err) => {
           if (err) throw err;
         });
+        for (i = 0; i < inputs.dates.length; i++) {
+          //populate new database input
+          const input = new InputValues({
+            _id: new mongoose.Types.ObjectId(),
+            time: date_converter(inputs.dates[i]),
+            upperValue: inputs.upperValue[i],
+            lowerValue: inputs.lowerValue[i]
+          });
+        };
+        res.locals.input = input;
         next();
       });
     } else {

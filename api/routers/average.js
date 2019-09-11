@@ -3,13 +3,11 @@ const router = express.Router();
 const sortingData = require('../modules/sortingData');
 const renderingData = require('../modules/renderingData');
 const outputDataLimit = require('../modules/outputDataLimit');
-const InputValues = require('../models/inputValues');
 const mongoose_connection = require('../middleware/mongoose_connection');
 
 router.get('/', mongoose_connection, (req, res, next) => {
     if (res) {
         const db = res.locals.db;
-        const databaseName = res.locals.databaseName;
         const collectionName = res.locals.collectionName;
         db.collection(collectionName).find().toArray(function(err, docs) {
             if (err) throw err;

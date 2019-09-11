@@ -1,5 +1,3 @@
-//const Joi = require('../node_modules/joi');
-//const debug = require('debug')('app:startup');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -13,7 +11,6 @@ const select_file = require('./api/routers/select_file');
 const period_of_interest = require('./api/routers/period_of_interest');
 const average = require('./api/routers/average');
 const graphics = require('./api/routers/graphics');
-const validation = require('./api/modules/validation');
 
 
 //show on screen .pug files from ./views folder
@@ -24,6 +21,7 @@ app.use(express.static(path.join(__dirname, 'views', 'assets', 'css')));
 //req and res body parsing
 app.use(bodyParser.urlencoded({ extended: 'true' }));
 app.use(bodyParser.json());
+app.locals.collection = "";
 
 //users inputs
 

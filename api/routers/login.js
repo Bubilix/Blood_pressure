@@ -24,7 +24,7 @@ router.post('/', (req,res,next) => {
         username: req.body.username,
         password: req.body.password
     });
-    res.locals.collectionName = "Users";
+    req.app.locals.collectionName = "Users";
     res.locals.user = user;
     next();    
 }, mongoose_connection, checkUser);

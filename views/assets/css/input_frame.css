@@ -33,8 +33,6 @@
 }
 .label:hover {
     background: linear-gradient(rgba(26, 35, 126, 0.7), rgba(106, 27, 154, 0.7));
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
 }
 .label:active {
     background: #CCF;

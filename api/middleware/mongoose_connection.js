@@ -3,7 +3,6 @@ const config = require('config');
 
 module.exports = function mongoose_connection(req, res, next) {
     const databaseName = "BloodPressDB";
-    const collectionName = req.app.locals.collectionName;
     const url = 'mongodb+srv://Bubilix:' + config.get('db.DBpassword') + '@clusterbubilix-qkwah.mongodb.net/' + databaseName + '?retryWrites=true&w=majority';
     mongoose.connect(url, { useNewUrlParser: true }, function(err, db) {
         if (err) {
@@ -11,7 +10,6 @@ module.exports = function mongoose_connection(req, res, next) {
         } else {
             console.log('Connected to MongoDB...');
             res.locals.db = db;
-            res.locals.collectionName = collectionName;
             next();
         }
     });

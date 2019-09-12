@@ -5,7 +5,7 @@ const app = express();
 module.exports = function checkUser(req, res, next) {
     const db = res.locals.db;
     const user = res.locals.user;
-    const collectionName = res.locals.collectionName;
+    const collectionName = req.app.locals.collectionName;
     db.collection(collectionName).find().toArray(function(err, listOfAllUsers) {
         if (err) {
             res.status(400).send('Nista nije pronadeno na ovoj stranici.');

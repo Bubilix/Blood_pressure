@@ -21,7 +21,6 @@ app.use(express.static(path.join(__dirname, 'views', 'assets', 'css')));
 //req and res body parsing
 app.use(bodyParser.urlencoded({ extended: 'true' }));
 app.use(bodyParser.json());
-app.locals.collection = "";
 
 //users inputs
 

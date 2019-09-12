@@ -17,8 +17,6 @@ router.get('/', (req, res, next) => {
     }
 });
 router.post('/', (req,res,next) => {
-    // bcrypt.hash(req.body.password, 10).then(function(hash) {
-    //     console.log(hash);
     const user = new Users({
         _id: new mongoose.Types.ObjectId(),
         username: req.body.username,

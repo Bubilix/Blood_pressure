@@ -8,7 +8,7 @@ const mongoose_connection = require('../middleware/mongoose_connection');
 router.get('/', mongoose_connection, (req, res, next) => {
     if (res) {
         const db = res.locals.db;
-        const collectionName = res.locals.collectionName;
+        const collectionName = req.app.locals.collectionName;
         db.collection(collectionName).find().toArray(function(err, docs) {
             if (err) {
                 res.send('Greška se pojavila prilikom učitavanja sadržaja.');

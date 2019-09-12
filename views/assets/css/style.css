@@ -56,6 +56,7 @@ input[type=text] {
 input[type=number] {
   border-radius: 10px;
   padding: 4px 5px;
+  width: 150px;
 }
 input[type=date] {
   border-radius: 10px;
@@ -70,4 +71,9 @@ input[type=date] {
   padding: 4px 5px;
   margin: auto;
   width: 100%;
+ }
+ .get_back {
+   background-image:  linear-gradient(rgba(229, 57, 53, 0.4), rgba(106, 27, 154, 0.4));
+   border-bottom-left-radius: 20px;
+   border-bottom-right-radius: 20px;
  }

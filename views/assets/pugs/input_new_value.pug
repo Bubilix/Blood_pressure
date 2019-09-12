@@ -29,7 +29,8 @@ block body
         form.lower-form
             input(type='number', min="1", max="400", form="submitInputs", name='lowerValue', placeholder='Unesi donji tlak', required='')
         // submit input data
-        form.formFormat(id="submitInputs")
+        form.formFormat(id="submitInputs" method="post")
             block content
             div
-                input(type='submit' formaction='welcome' value='Pohrani prosjek unesenih mjerenja' method="post")
+                input(type='submit' formaction='/welcome' value='Pohrani prosjek unesenih mjerenja')
+        include get_back.pug

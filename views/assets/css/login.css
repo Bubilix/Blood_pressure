@@ -5,7 +5,7 @@
     box-shadow: 5px 5px 3px;
     border-radius: 20px;
     width: 400px;
-    padding: 5px 15px;
+    padding-top: px;
 }
 .current_user {
     display: flex;
@@ -25,4 +25,16 @@
 }
 .submit_new_user > input {
     min-width: 100px;
+}
+.alert {
+    width: 100%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-image:  linear-gradient(rgba(229, 57, 53, 0.4), rgba(106, 27, 154, 0.4));
+}
+.alert > h2 {
+    text-align: center;
+    color: rgb(202, 172, 172);
+    font-size: 130%;
+    padding: 8px;
 }

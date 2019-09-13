@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
         res.status(404).write('Page not found!');
     }
 });
-router.post('/', (req, res, next) => {
+router.post('/', mongoose_connection, (req, res, next) => {
     const input = new InputValues({
         _id: new mongoose.Types.ObjectId(),
         upperValue: req.body.upperValue,
@@ -23,6 +23,6 @@ router.post('/', (req, res, next) => {
     });
     res.locals.input = [input];
     next();
-}, mongoose_connection, saveDBCollection);
+}, saveDBCollection);
 
 module.exports = router;

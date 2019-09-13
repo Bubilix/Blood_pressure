@@ -10,4 +10,5 @@ block body
                 input(type='password', name='password', pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}", autocomplete='current-password', oninvalid='setCustomValidity("Lozinka mora sadrzavati najmanje 1 broj, 1 veliko i 1 malo slovo i imati 8 znakova")' required="")
             .submit_new_user
                 input(type='submit', name='submit_user', value='Prijavi se', form='username_password_input' formaction='/')
+            block content
 

@@ -1,24 +1,26 @@
-const bcrypt = require('bcrypt');
+const Users = require('../models/users');
+const mongoose = require('mongoose');
 
 module.exports = function checkUser(req, res, next) {
     const db = res.locals.db;
-    const user = res.locals.user;
-    const collectionName = req.app.locals.collectionName;
-    db.collection(collectionName).findOne({
-        username: user.username
+    db.collection('Users').findOne({
+        username: req.body.username
     }).then((result) => {
         if (result) {
-            if (result.password === user.password) {
-                console.log('Korisnik smije koristiti stranicu');
-                req.app.locals.collectionName = user.username;
-            }
+            res.locals.data = result;
+            next();
         } else {
-            db.collection(collectionName).insertOne(user, function(err, db) {
-                if (err) throw err;
-                console.log('Novi korisnik dodan u kolekciju ' + collectionName + ' sa imenom ' + user.username);
-                req.app.locals.collectionName = user.username;
-            });
-        }
-    }).catch(err => console.log('Neuspjesan pokusaj ucitavanja podataka!'));
-    res.redirect('/welcome');
+            db.collection('Users').insertOne(new Users ({
+                _id: new mongoose.Types.ObjectId(),
+                username: req.body.username,
+                password: res.locals.hash
+                }));
+            console.log('Novi korisnik dodan u kolekciju Users sa imenom ' + req.body.username);
+            req.app.locals.collectionName = req.body.username;
+            res.redirect('/welcome');
+        };
+    }).catch(err => {
+        console.log('Neuspjesan pokusaj ucitavanja podataka!');
+        res.redirect('/');
+    });
 }

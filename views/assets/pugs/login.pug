@@ -2,12 +2,12 @@ extends ../../index.pug
 
 block body
     .login_form
-        form(id='username_password_input', action='/' method='post')
+        form(id='username_password_input' method='post')
             .current_user
                 h2 Username
-                input(type='text', name='username', value='', pattern='(?=.*[a-zA-Z])(?=.*[a-z]).{6,15}', required='', autofocus='')
+                input(type='text', name='username', value='', pattern='(?=.*[a-zA-Z])(?=.*[a-z]).{6,15}', autocomplete='username', required='', autofocus='')
                 h2 Password
-                input(type='password', name='password', pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}", oninvalid='setCustomValidity("Lozinka mora sadrzavati najmanje 1 broj, 1 veliko i 1 malo slovo i imati 8 znakova")' autocomplete='current-password' required="")
+                input(type='password', name='password', pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}", autocomplete='current-password', oninvalid='setCustomValidity("Lozinka mora sadrzavati najmanje 1 broj, 1 veliko i 1 malo slovo i imati 8 znakova")' required="")
             .submit_new_user
-                input(type='submit', name='submit_user', value='Prijavi se', form='username_password_input')
+                input(type='submit', name='submit_user', value='Prijavi se', form='username_password_input' formaction='/')
 

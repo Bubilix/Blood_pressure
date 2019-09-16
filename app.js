@@ -11,6 +11,7 @@ const select_file = require('./api/routers/select_file');
 const period_of_interest = require('./api/routers/period_of_interest');
 const average = require('./api/routers/average');
 const graphics = require('./api/routers/graphics');
+const auth = require('./api/middleware/auth');
 
 
 //show on screen .pug files from ./views folder

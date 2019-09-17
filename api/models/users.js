@@ -18,9 +18,17 @@ const usersSchema = new mongoose.Schema({
     }
 });
 
-usersSchema.methods.generateAuthToken = function() {
+usersSchema.methods.generateAuthToken = function(req, res, next) {
     const token = jwt.sign({_id: this._id, username: this.username, password: this.password}, config.get('jwtPrivateKey'));
     return token;
+    // jwt.sign({_id: this._id, username: this.username, password: this.password}, config.get('jwtPrivateKey'), (err, token) => {
+    //     if (!err) {
+    //         console.log('Korisnik upisan');
+    //         res.json({token});
+    //     } else {
+    //         res.send('Prijava neuspjela.');
+    //     }
+    // });
 }
 
 module.exports = mongoose.model('Users', usersSchema);

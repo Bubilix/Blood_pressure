@@ -11,7 +11,10 @@ module.exports = function checkUser(req, res, next) {
             bcrypt.compare(req.body.password, result.password, function(err, equality) {
                 if (equality == true) {
                     req.app.locals.collectionName = result.username;
-                    res.redirect('/welcome');
+                    console.log(result);
+                    console.log(typeof result);
+                    const token = result.methods.generateAuthToken();
+                    res.set({token}).redirect('/welcome');
                 } else {
                     res.render('./assets/pugs/wrong_password.pug', {
                         nav_class_input: 'hidden',
@@ -29,11 +32,10 @@ module.exports = function checkUser(req, res, next) {
                     });
                 db.collection('Users').insertOne(user, function() {
                     console.log('Novi korisnik dodan u kolekciju Users sa imenom ' + req.body.username);
-                    const token = user.generateAuthToken();
-                    console.log(token);
-                    res.header('x-auth-token', token);
                     req.app.locals.collectionName = req.body.username;
-                    res.redirect('/welcome');
+                    const token = user.generateAuthToken();
+                    console.log(user);
+                    res.set(token).redirect('/welcome');
                 });
             })
             

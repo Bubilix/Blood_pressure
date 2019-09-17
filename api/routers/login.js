@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose_connection = require('../middleware/mongoose_connection');
 const checkUser = require('../middleware/checkUser');
+const headerSetter = require('../middleware/headerSetter');
 
 router.get('/', (req, res) => {
     if (res) {
@@ -13,7 +14,7 @@ router.get('/', (req, res) => {
         res.status(404).write('Page not found!');
     }
 });
-router.post('/', mongoose_connection, checkUser);
+router.post('/', mongoose_connection,  checkUser);
 
 module.exports = router;
 

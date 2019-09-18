@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const mongoose_connection = require('../middleware/mongoose_connection');
 const checkUser = require('../middleware/checkUser');
-const headerSetter = require('../middleware/headerSetter');
 
 router.get('/', (req, res) => {
     if (res) {

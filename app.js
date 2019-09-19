@@ -36,7 +36,7 @@ if (!config.get('jwtPrivateKey')) {
 //login form
 app.use('/', login);
 //welcome screen and input data to the database
-app.use('/welcome',  welcome_screen);
+app.use('/welcome', auth, welcome_screen);
 //input new values
 app.use('/input_new_value', new_values);
 //input new multiple values

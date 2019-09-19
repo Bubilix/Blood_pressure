@@ -4,26 +4,7 @@ const bcrypt = require('bcryptjs');
 
 module.exports = function checkUser(req, res, next) {
     Users.findOne({ username: req.body.username }, function(err, document) {
-        if (document) {
-            bcrypt.compare(req.body.password, document.password, function(err, equality) {
-                if (equality == true) {
-                    const user = new Users ({
-                        _id: new mongoose.Types.ObjectId(),
-                        username: req.body.username,
-                        password: document.password
-                        });
-                    const token = user.generateAuthToken();
-                    console.log(token);
-                    res.redirect('/welcome');
-                } else {
-                    res.render('./assets/pugs/wrong_password.pug', {
-                        nav_class_input: 'hidden',
-                        nav_class_show: 'hidden',
-                        alert_message: 'Unesena pogresna lozinka!!!'
-                    });
-                }
-            })
-        } else {
+        if (!document) {
             bcrypt.hash(req.body.password, 10, function(err, hash) {
                 const user = new Users ({
                     _id: new mongoose.Types.ObjectId(),
@@ -35,11 +16,31 @@ module.exports = function checkUser(req, res, next) {
                 })
                 const token = user.generateAuthToken();
                 res
-                    .cookie('access_token', 'Bearer ' + token)
+                    .cookie('access_token', token)
                     .redirect('/welcome');
             });
+        } else { 
+            // bcrypt.compare(req.body.password, document.password, function(err, equality) {
+            //     if (equality == true) {
+            //         const user = new Users ({
+            //             _id: new mongoose.Types.ObjectId(),
+            //             username: req.body.username,
+            //             password: document.password
+            //             });
+            //         const token = user.generateAuthToken();
+            //         console.log(token);
+                     res.redirect('/welcome');
+            //     } else {
+            //         res.render('./assets/pugs/wrong_password.pug', {
+            //             nav_class_input: 'hidden',
+            //             nav_class_show: 'hidden',
+            //             alert_message: 'Unesena pogresna lozinka!!!'
+            //         });
+            //     }
+            // })
         }
     })
+}
     // const db = res.locals.db;
     // db.collection('Users').findOne({
     //     username: req.body.username
@@ -81,4 +82,3 @@ module.exports = function checkUser(req, res, next) {
     //     console.log('Neuspjesan pokusaj ucitavanja podataka!');
     //     res.redirect('/');
     // });
-}

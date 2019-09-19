@@ -3,17 +3,22 @@ const config = require('config');
 
 module.exports = function auth(req, res, next) {
     
-    console.log(req.headers['authorization']);
-    req.token = req.headers['authorization'];
-    if (!req.token) {
-        return res.status(401). send('Niste se prijavili u sustav!!!');
+    if (!req.cookies) {
+        return res.status(401). send('Neuspješna prijava!!!');
     }
+    const stringJSON = JSON.stringify(req.cookies);
+    const splitStringJSON = stringJSON.slice(0, -3).split('Bearer ');
+    console.log( typeof splitStringJSON[1]);
+    console.log(Buffer.from(config.get('jwtPrivateKey'), 'base64'));
+    const secret = Buffer.from(config.get('jwtPrivateKey'), 'base64');
 
-    try {
-        const payload = jwt.verify(token, config.get('jwtPrivateKey'));
-        req.user = payload;
-        next();
-    } catch (ex) {
-        res.status(400). send('Invalid token.');
-    }
+    jwt.verify(splitStringJSON[1], secret, function(err, payload) {
+        if (err) {
+            throw err;
+        } else {
+            console.log(payload);
+            req.user = payload;
+            next();
+        }
+    });
 }

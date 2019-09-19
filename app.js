@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 const config = require('config');
 const login = require('./api/routers/login');
@@ -22,13 +23,20 @@ app.use(express.static(path.join(__dirname, 'views', 'assets', 'css')));
 //req and res body parsing
 app.use(bodyParser.urlencoded({ extended: 'true' }));
 app.use(bodyParser.json());
+app.use(cookieParser());
+
+//if jwtPrivatekey not defined app is not allowed to work
+if (!config.get('jwtPrivateKey')) {
+    console.error('FATAL ERROR: jwtprivateKey is not defined');
+    process.exit(1);
+}
 
 //users inputs
 
 //login form
 app.use('/', login);
 //welcome screen and input data to the database
-app.use('/welcome', welcome_screen);
+app.use('/welcome',  welcome_screen);
 //input new values
 app.use('/input_new_value', new_values);
 //input new multiple values

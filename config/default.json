@@ -1,4 +1,4 @@
 {
     "name": "Blood pressure app",
-    "jwtPrivateKey": "BloodPressureApp_JWT"
+    "jwtPrivateKey": ""
 }

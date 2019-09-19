@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const mongoose = require('mongoose');
+const {inputSchema} = require('./inputValues');
 
 const usersSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
@@ -15,6 +16,9 @@ const usersSchema = new mongoose.Schema({
     lastLogin: {
         type: Date,
         default: Date.now
+    },
+    inputs: {
+        type: inputSchema
     }
 });
 
@@ -31,4 +35,4 @@ usersSchema.methods.generateAuthToken = function(req, res, next) {
     // });
 }
 
-module.exports = mongoose.model('Users', usersSchema);
+module.exports.Users = mongoose.model('Users', usersSchema);

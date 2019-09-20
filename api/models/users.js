@@ -22,17 +22,14 @@ const usersSchema = new mongoose.Schema({
     }
 });
 
-usersSchema.methods.generateAuthToken = function(req, res, next) {
-    const token = jwt.sign({_id: this._id, username: this.username, password: this.password}, config.get('jwtPrivateKey'));
+usersSchema.methods.generateAuthToken = function() {
+    const token = jwt.sign({_id: this._id, username: this.username}, config.get('jwtPrivateKey'));
     return token;
-    // jwt.sign({_id: this._id, username: this.username, password: this.password}, config.get('jwtPrivateKey'), (err, token) => {
-    //     if (!err) {
-    //         console.log('Korisnik upisan');
-    //         res.json({token});
-    //     } else {
-    //         res.send('Prijava neuspjela.');
-    //     }
-    // });
-}
+};
+usersSchema.methods.insertInput = function(upperValue, lowerValue, time) {
+    this.inputs.upperValue = upperValue;
+    this.inputs.lowerValue = lowerValue;
+    this.inputs.time = time;
+};
 
 module.exports.Users = mongoose.model('Users', usersSchema);

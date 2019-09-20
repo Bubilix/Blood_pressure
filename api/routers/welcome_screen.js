@@ -15,14 +15,16 @@ router.get('/', (req, res, next) => {
         res.status(404).write('Page not found!');
     }
 });
-router.post('/', mongoose_connection, (req, res, next) => {
-    const input = new InputValues({
-        _id: new mongoose.Types.ObjectId(),
-        upperValue: req.body.upperValue,
-        lowerValue: req.body.lowerValue
-    });
-    res.locals.input = [input];
-    next();
-}, saveDBCollection);
+router.post('/', mongoose_connection, saveDBCollection);
 
 module.exports = router;
+
+// , (req, res, next) => {
+//     const input = new InputValues({
+//         _id: new mongoose.Types.ObjectId(),
+//         upperValue: req.body.upperValue,
+//         lowerValue: req.body.lowerValue
+//     });
+//     res.locals.input = [input];
+//     next();
+// }

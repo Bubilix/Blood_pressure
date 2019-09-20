@@ -17,19 +17,14 @@ const usersSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    inputs: {
-        type: inputSchema
-    }
+    inputs: [inputSchema]
 });
-
 usersSchema.methods.generateAuthToken = function() {
     const token = jwt.sign({_id: this._id, username: this.username}, config.get('jwtPrivateKey'));
     return token;
 };
 usersSchema.methods.insertInput = function(upperValue, lowerValue, time) {
-    this.inputs.upperValue = upperValue;
-    this.inputs.lowerValue = lowerValue;
-    this.inputs.time = time;
+    this.inputs.push({upperValue: upperValue, lowerValue: lowerValue, time: time});
 };
 
 module.exports.Users = mongoose.model('Users', usersSchema);

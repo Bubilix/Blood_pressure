@@ -18,13 +18,3 @@ router.get('/', (req, res, next) => {
 router.post('/', mongoose_connection, saveDBCollection);
 
 module.exports = router;
-
-// , (req, res, next) => {
-//     const input = new InputValues({
-//         _id: new mongoose.Types.ObjectId(),
-//         upperValue: req.body.upperValue,
-//         lowerValue: req.body.lowerValue
-//     });
-//     res.locals.input = [input];
-//     next();
-// }

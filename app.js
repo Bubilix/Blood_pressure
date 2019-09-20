@@ -6,8 +6,8 @@ const path = require('path');
 const config = require('config');
 const login = require('./api/routers/login');
 const welcome_screen = require('./api/routers/welcome_screen');
-const new_values = require('./api/routers/new_values');
-const new_multiple_values = require('./api/routers/new_multiple_values');
+const input_values = require('./api/routers/input_values');
+const input_multiple_values = require('./api/routers/input_multiple_values');
 const select_file = require('./api/routers/select_file');
 const period_of_interest = require('./api/routers/period_of_interest');
 const average = require('./api/routers/average');
@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'views', 'assets', 'css')));
 app.use(bodyParser.urlencoded({ extended: 'true' }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.locals = {upperValues: [], lowerValues: []};
 
 //if jwtPrivatekey not defined app is not allowed to work
 if (!config.get('jwtPrivateKey')) {
@@ -38,11 +39,11 @@ app.use('/', login);
 //welcome screen and input data to the database
 app.use('/welcome', auth, welcome_screen);
 //input new values
-app.use('/input_new_value', new_values);
+app.use('/input_values', auth, input_values);
 //input new multiple values
-app.use('/input_multiple_values', new_multiple_values);
+app.use('/input_multiple_values', auth, input_multiple_values);
 //input values from external text file
-app.use('/select_file', select_file);
+app.use('/select_file', auth, select_file);
 
 //UI outputs
 

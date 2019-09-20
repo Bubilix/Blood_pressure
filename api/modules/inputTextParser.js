@@ -10,10 +10,17 @@ function inputTextParser(input) {
     input = input.split((/\r\n/g)||(/\n/g));
     for (i = 0; i < input.length; i++) {
         //if dates output wanted integrate to the output returned
-        input_values.dates.push(input[i].slice(0, input[i].indexOf(",")));
+        loc = 0;
+        if (input[i].indexOf(",") > input[i].indexOf("-")) {
+            loc = input[i].indexOf(",");
+        } else {
+            loc = input[i].indexOf("-");
+        }
+        const dateSlice = input[i].slice(0, loc);
+        input_values.dates.push(dateSlice);
 
         //tako values of one input and slice from DD.MM.YYYY., part away
-        let values = input[i].slice(input[i].indexOf(",") + 1);
+        let values = input[i].slice(loc + 1);
         //convert string to a array
         values = values.split(",");
         let temp_upper = [];    //temproary upper values array

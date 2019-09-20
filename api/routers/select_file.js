@@ -8,6 +8,7 @@ const InputValues = require('../models/inputValues');
 const date_converter = require('../modules/date_converter');
 const mongoose_connection = require('../middleware/mongoose_connection');
 const saveDBCollection = require('../middleware/saveDBCollection');
+const {Users} = require('../models/users');
 
 router.get('/', (req, res, next) => {
     if (res) {
@@ -33,35 +34,37 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 //add text file input data parsed to a database
-router.post('/', upload.single('fileupload'), (req, res, next) => {
+router.post('/', upload.single('fileupload'), mongoose_connection, (req, res, next) => {
     if (res) {
       //read uploaded text file as string
       fs.readFile(req.file.path, 'utf-8', (err, data) => {
         if (err) throw err;
         //parse input data in object of dates, upperValues and lowerValues
         const inputs = inputTextParser(data);
-        let inputArray = [];
         //delete uploaded file, so that uploads folder is again empty (data are loaded in the database and are not longer needed)
         fs.unlink(req.file.path, (err) => {
           if (err) throw err;
         });
-        for (i = 0; i < inputs.dates.length; i++) {
-          //populate new database input
-          const input = new InputValues({
-            _id: new mongoose.Types.ObjectId(),
-            time: date_converter(inputs.dates[i]),
-            upperValue: inputs.upperValue[i],
-            lowerValue: inputs.lowerValue[i]
-          });
-          inputArray.push(input);
-        };
-        res.locals.input = inputArray;
-        next();
+        //find user in a database according to his username
+        Users.findOne({username: req.user.username}, function(err, user) {
+          if (user) {
+            //insert all input values to a temproary array of inputs
+            for (i = 0; i < inputs.dates.length; i++) {
+              user.insertInput(inputs.upperValue[i], inputs.lowerValue[i], date_converter(inputs.dates[i]));
+            };
+            //when all values inserted save it to a database
+            user.save(function(err) {if (err) throw err});
+          } else {
+            res.status(400).send('User not found!');
+          }
+        });
+        //after all values input return back to the main page /welcome
+        res.redirect('/welcome');
       });
     } else {
       //if nothing loaded alert user
       res.status(404).send('No input file found!')
     };      
-}, mongoose_connection, saveDBCollection);
+});
 
 module.exports = router;

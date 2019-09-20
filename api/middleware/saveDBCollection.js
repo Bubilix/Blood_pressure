@@ -1,29 +1,16 @@
 const {Users} = require('../models/users');
+const calcSum = require('../modules/calcSum');
 
 module.exports = function saveDBCollection(req, res, next) {
-    const db = res.locals.db;
-    const inputs = res.locals.input;
-    const collectionName = req.app.locals.collectionName;
 
     Users.findOne({username: req.user.username}, function(err, user) {
         if (user) {
-            console.log(user);
-            user.inputs.upperValue = req.body.upperValue;
-            user.inputs.lowerValue = req.body.lowerValue;
-            //user.insertInput(req.body.upperValue, req.body.lowerValue);
+            const upperValue = Math.round((parseInt(req.body.upperValue) + parseInt(calcSum(req.app.locals.upperValues))) / (req.app.locals.upperValues.length + 1));
+            const lowerValue = Math.round((parseInt(req.body.lowerValue) + parseInt(calcSum(req.app.locals.lowerValues))) / (req.app.locals.lowerValues.length + 1));
+            user.insertInput(upperValue, lowerValue);
             user.save(function(err) {if (err) throw err});
+            req.app.locals = {upperValues: [], lowerValues: []};
         }
     });
-    // db.collection(collectionName).findOne({}, function(err, result) {
-    //     if (err) {
-    //         res.status(400).send('Nista nije pronadeno na ovoj stranici.');
-    //     } else {
-    //         for (let input of inputs) {
-    //             db.collection(collectionName).insertOne(input, function(err, db) {
-    //                 if (err) throw err;
-    //             });
-    //         }
-    //     };
-    // })
     res.redirect('/welcome');
 }

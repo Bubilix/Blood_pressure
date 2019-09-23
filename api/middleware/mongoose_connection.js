@@ -9,7 +9,6 @@ module.exports = function mongoose_connection(req, res, next) {
             console.log('Could not connect to MongoDB.', err)
         } else {
             console.log('Connected to MongoDB...');
-            res.locals.db = db;
             next();
         }
     });

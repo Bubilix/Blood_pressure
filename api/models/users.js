@@ -17,7 +17,7 @@ const usersSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    inputs: [inputSchema]
+    inputs: [{type: inputSchema}]
 });
 usersSchema.methods.generateAuthToken = function() {
     const token = jwt.sign({_id: this._id, username: this.username}, config.get('jwtPrivateKey'));
@@ -25,6 +25,9 @@ usersSchema.methods.generateAuthToken = function() {
 };
 usersSchema.methods.insertInput = function(upperValue, lowerValue, time) {
     this.inputs.push({upperValue: upperValue, lowerValue: lowerValue, time: time});
+};
+usersSchema.methods.getInputs = function() {
+    return this.inputs;
 };
 
 module.exports.Users = mongoose.model('Users', usersSchema);

@@ -4,17 +4,20 @@ const sortingData = require('../modules/sortingData');
 const renderingData = require('../modules/renderingData');
 const outputDataLimit = require('../modules/outputDataLimit');
 const mongoose_connection = require('../middleware/mongoose_connection');
+const {Users} = require('../models/users');
+const dateConverter = require('../modules/date_converter');
 
 router.get('/', mongoose_connection, (req, res, next) => {
     if (res) {
-        const db = res.locals.db;
-        const collectionName = req.app.locals.collectionName;
-        db.collection(collectionName).find().toArray(function(err, docs) {
+        Users.findOne({username: req.user.username}, 'inputs', { time: req.query.period_begin}, function(err, user) {
             if (err) {
                 res.send('Greška se pojavila prilikom učitavanja sadržaja.');
             } else {
-                if (docs.length > 0) {
-                    const sortedData = sortingData(docs);
+                console.log(user);
+                const query = user.get('inputs');
+                const inputs = user.getInputs();
+                if (user.inputs.length > 0) {
+                    const sortedData = sortingData(user.inputs);
                     const renderData = renderingData(sortedData);
                     const renderDataLimit = outputDataLimit(renderData, req.query.number_to_show);
                     res.render('./assets/pugs/average_values.pug', {
@@ -28,7 +31,7 @@ router.get('/', mongoose_connection, (req, res, next) => {
                 } else {
                     res.send('Još nije unešeno niti jedno mjerenje!!!\nMolimo unesite barem jedno mjerenje da bismo mogli pokazati prosječne vrijednosti.');
                 }
-            } 
+            }
         });
     } else {
         res.status(404).send('Access to server denied!');

@@ -50,7 +50,7 @@ app.use('/select_file', auth, select_file);
 //input time period of interest to show values for the input time frame
 app.use('/period_of_interest', period_of_interest);
 //show average values in the time frame and last few values input underneath
-app.use('/average', average);
+app.use('/average', auth, average);
 //show graphically values changes over time
 app.use('/last_inputs', graphics);
 

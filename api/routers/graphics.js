@@ -21,21 +21,16 @@ router.get('/', mongoose_connection, (req, res, next) => {
                     return (Date.parse(input.time) <= Date.now())
                     && (Date.parse(input.time) >= (Date.now() - (7 * 24 * 60 * 60000)));
                 });
-                const output = inputs.toArray();
-                console.log(output);
                 const objToArr = [[], [], []];
-                const upperValues = [];
-                const lowerValues = [];
-                const dates = [];
                 inputs.forEach(input => {
-                    upperValues.push(input.upperValue);
-                    lowerValues.push(input.lowerValue);
-                    dates.push(input.time);
+                    objToArr[0].push(input.time);
+                    objToArr[1].push(input.upperValue);
+                    objToArr[2].push(input.lowerValue);
                 });
-                //console.log(upperValues);
                 res.render('./assets/pugs/graphics.pug', {
-                    data: JSON.stringify(upperValues),
-                    labels: JSON.stringify(dates)
+                    data: JSON.stringify(objToArr[1]),
+                    data1: JSON.stringify(objToArr[2]),
+                    labels: JSON.stringify(objToArr[0])
                 });
             }
         });

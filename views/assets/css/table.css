@@ -11,15 +11,19 @@
 }
 .average_values {
     text-align: center;
-    border-bottom: 1px solid black;
     background-image: linear-gradient(rgba(26, 35, 126, 0.3), rgba(106, 27, 154, 0.5));
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
+.graphics {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: white;
+    border: 1px solid black;
+}
 .table_container {
     display: table;
     padding-top: 0;
-    border-top: 1px solid black;
     border-bottom: 1px solid black;
     background-image: linear-gradient(rgba(26, 35, 126, 0.3), rgba(106, 27, 154, 0.5));
 }

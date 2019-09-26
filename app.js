@@ -52,7 +52,7 @@ app.use('/period_of_interest', period_of_interest);
 //show average values in the time frame and last few values input underneath
 app.use('/average', auth, average);
 //show graphically values changes over time
-app.use('/last_inputs', graphics);
+app.use('/last_inputs', auth, graphics);
 
 //listening on port for browser connection
 const port = (config.get('Blood_pressure_app_port.port') || 3000);

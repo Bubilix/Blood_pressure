@@ -9,6 +9,7 @@
 @import "./table.css";
 @import "./input_frame.css";
 @import "./login.css";
+@import "./chart.css";
 
 * {
   margin: 0;

@@ -13,24 +13,30 @@ router.get('/', mongoose_connection, (req, res, next) => {
             if (err) {
                 res.send('Greška se pojavila prilikom učitavanja sadržaja.');
             } else {
-                //const timeFrame = [];
-                
-                res.render('./assets/pugs/graphics.pug', {
-                    data: "[20000, 14000, 12000, 15000, 18000, 19000, 22000]",
-                    labels: '["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]'
+                // const inputs = user.inputs.filter(function(input) {
+                //     return (Date.parse(input.time) <= Date.parse(req.query.period_begin) + (23.99 * 60 * 60000))
+                //     && (Date.parse(input.time) >= Date.parse(req.query.period_end));
+                // });
+                const inputs = user.inputs.filter(function(input) {
+                    return (Date.parse(input.time) <= Date.now())
+                    && (Date.parse(input.time) >= (Date.now() - (7 * 24 * 60 * 60000)));
                 });
-                // if (inputs.length > 0) {
-                //     const sortedData = sortingData(docs);
-                //     const renderData = renderingData(sortedData);
-                //     const renderDataLimit = outputDataLimit(renderData, req.query.number_to_show);
-                //     res.render('./assets/pugs/output_with_table.pug', {
-                //         nav_class_input: "hidden",
-                //         nav_class_show: 'active-nav2',
-                //         sortData: renderDataLimit
-                //     });
-                // } else {
-                //     res.send('Još nije unešeno niti jedno mjerenje!!!\nMolimo unesite barem jedno mjerenje da bismo mogli pokazati prosječne vrijednosti.');
-                // }
+                const output = inputs.toArray();
+                console.log(output);
+                const objToArr = [[], [], []];
+                const upperValues = [];
+                const lowerValues = [];
+                const dates = [];
+                inputs.forEach(input => {
+                    upperValues.push(input.upperValue);
+                    lowerValues.push(input.lowerValue);
+                    dates.push(input.time);
+                });
+                //console.log(upperValues);
+                res.render('./assets/pugs/graphics.pug', {
+                    data: JSON.stringify(upperValues),
+                    labels: JSON.stringify(dates)
+                });
             }
         });
     } else {

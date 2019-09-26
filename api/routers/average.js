@@ -5,8 +5,6 @@ const renderingData = require('../modules/renderingData');
 const outputDataLimit = require('../modules/outputDataLimit');
 const mongoose_connection = require('../middleware/mongoose_connection');
 const {Users} = require('../models/users');
-const {Inputs} = require('../models/inputValues');
-const dateConverter = require('../modules/date_converter');
 
 router.get('/', mongoose_connection, (req, res, next) => {
     if (res) {

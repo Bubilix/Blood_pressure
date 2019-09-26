@@ -17,9 +17,8 @@ const usersSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    inputs: [inputSchema]
+    inputs: [{type: inputSchema}]
 });
-
 usersSchema.methods.generateAuthToken = function() {
     const token = jwt.sign({_id: this._id, username: this.username}, config.get('jwtPrivateKey'));
     return token;

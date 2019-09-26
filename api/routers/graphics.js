@@ -16,8 +16,8 @@ router.get('/', mongoose_connection, (req, res, next) => {
                 //const timeFrame = [];
                 
                 res.render('./assets/pugs/graphics.pug', {
-                    data: [20000, 14000, 12000, 15000, 18000, 19000, 22000],
-                    labels: ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
+                    data: "[20000, 14000, 12000, 15000, 18000, 19000, 22000]",
+                    labels: '["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]'
                 });
                 // if (inputs.length > 0) {
                 //     const sortedData = sortingData(docs);

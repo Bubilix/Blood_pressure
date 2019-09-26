@@ -20,14 +20,21 @@ block graphics
             type: 'line',
             data: {
                 labels: JSON.parse('!{labels}'),
-                datasets: [{
-                data: JSON.parse('!{data}'),
-                data:  JSON.parse('!{data1}'),
-                fill: false,
-                borderColor: '#af90ca',
-                backgroundColor: '#af90ca',
-                label: 'Mjerenja tlaka'
-                }],
+                datasets:
+                    [{
+                        data: JSON.parse('!{data}'),
+                        fill: false,
+                        borderColor: '#af90ca',
+                        backgroundColor: '#af90ca',
+                        label: 'Mjerenja tlaka'
+                    },
+                    {
+                        data:  JSON.parse('!{data1}'),
+                        fill: false,
+                        borderColor: '#af90ca',
+                        backgroundColor: '#af90ca',
+                        label: 'Mjerenja tlaka'
+                    }],
             },
             options: {
                 scales: {

@@ -1,11 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose_connection = require('../middleware/mongoose_connection');
-const sortingData = require('../modules/sortingData');
-const renderingData = require('../modules/renderingData');
-const outputDataLimit = require('../modules/outputDataLimit');
 const {Users} = require('../models/users');
-const Chart = require('chart.js');
 
 router.get('/', mongoose_connection, (req, res, next) => {
     if (res) {

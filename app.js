@@ -9,7 +9,8 @@ const welcome_screen = require('./api/routers/welcome_screen');
 const input_values = require('./api/routers/input_values');
 const input_multiple_values = require('./api/routers/input_multiple_values');
 const select_file = require('./api/routers/select_file');
-const period_of_interest = require('./api/routers/period_of_interest');
+const time_period_average = require('./api/routers/time_period_average');
+const time_period_graphics = require('./api/routers/time_period_graphics');
 const average = require('./api/routers/average');
 const graphics = require('./api/routers/graphics');
 const auth = require('./api/middleware/auth');
@@ -47,12 +48,14 @@ app.use('/select_file', auth, select_file);
 
 //UI outputs
 
-//input time period of interest to show values for the input time frame
-app.use('/period_of_interest', period_of_interest);
+//input time period of interest to show average of values
+app.use('/time_period_average', time_period_average);
+//input time period of interest to show values over time diagramme
+app.use('/time_period_graphics', time_period_graphics);
 //show average values in the time frame and last few values input underneath
 app.use('/average', auth, average);
 //show graphically values changes over time
-app.use('/last_inputs', auth, graphics);
+app.use('/graphics', auth, graphics);
 
 //listening on port for browser connection
 const port = (config.get('Blood_pressure_app_port.port') || 3000);

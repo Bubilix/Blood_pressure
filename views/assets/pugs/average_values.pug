@@ -3,3 +3,15 @@ extends output_with_table.pug
 block average
     .average_title
         h2 Prosjecne vrijednosti tlaka u periodu od #{begin} do #{end}:
+    .last_ten_values_render
+        h2 Posljednja mjerenja
+        table
+            tr
+                th Datum
+                th Gornji tlak
+                th Donji tlak
+            each data in sortData
+                tr
+                    td#left #{data.time}
+                    td #{data.upperValue}
+                    td#right #{data.lowerValue}

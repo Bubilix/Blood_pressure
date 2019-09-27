@@ -2,7 +2,7 @@ extends ../../index.pug
 
 block body
     .input-field
-        form(action='/average')
+        form(action= endpoint)
             input(type='date', name='period_begin', placeholder='', value=today, required='', autofocus='')
             input(type='date', name='period_end', placeholder='', value=week_before required='')
             input(type='text', name='number_to_show', placeholder='Unesite broj 1-10')

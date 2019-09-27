@@ -77,4 +77,5 @@ input[type=date] {
    background-image:  linear-gradient(rgba(229, 57, 53, 0.4), rgba(106, 27, 154, 0.4));
    border-bottom-left-radius: 20px;
    border-bottom-right-radius: 20px;
+   border-top: 1px solid black;
  }

@@ -1,11 +1,40 @@
-extends output_with_table.pug
+extends values_output_frame.pug
 
 block average
-    .average_title
-        h2 Prosjecne vrijednosti tlaka u periodu od #{begin} do #{end}:
-    .last_ten_values_render
+    .average_output
+        .form_boundary
+            //form title
+            .average_title
+                h2 Prosjecne vrijednosti tlaka
+            //frame with output values
+            .values_output_average
+                //upper pressure title
+                div.blood-pressure-title
+                    div.device-screen
+                        h3.red 120
+                        h3.blue-transparent 80
+                    h2 Gornji tlak
+                //average upper pressure value
+                div.output_outline
+                    div.output_blood_pressure(class="red")
+                        h4 #{avg_upper}
+                //lower pressure title
+                div.blood-pressure-title
+                    div.device-screen
+                        h3.red-transparent 120
+                        h3.blue 80
+                    h2 Donji tlak
+                //average lower pressure value
+                div.output_outline
+                    div.output_blood_pressure(class="blue")
+                        h4 #{avg_lower}
+    //show last inputs
+    .last_ten_values_render#
+        //title
         h2 Posljednja mjerenja
+        //table frame
         table
+            //
             tr
                 th Datum
                 th Gornji tlak

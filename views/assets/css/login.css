@@ -5,7 +5,9 @@
     box-shadow: 5px 5px 3px;
     border-radius: 20px;
     width: 400px;
-    padding-top: px;
+    padding-top: 10px;
+    position: relative;
+    top: 150px;
 }
 .current_user {
     display: flex;

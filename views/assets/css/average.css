@@ -1,0 +1,115 @@
+.render_inputs {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 100px;
+    width: 40%;
+    margin: auto;
+    border: 1px solid black;
+    box-shadow: 5px 5px 3px;
+    border-radius: 20px;
+}
+.average_values {
+    text-align: center;
+    background-image: linear-gradient(rgba(26, 35, 126, 0.3), rgba(106, 27, 154, 0.5));
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    display: flex;
+    flex-direction: row;
+}
+.graphics {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: white;
+}
+.table_container {
+    display: table;
+    padding-top: 0;
+    border-bottom: 1px solid black;
+    background-image: linear-gradient(rgba(26, 35, 126, 0.3), rgba(106, 27, 154, 0.5));
+}
+.no_output {
+    text-align: center;
+    background-image: linear-gradient(rgba(26, 35, 126, 0.3), rgba(106, 27, 154, 0.5));
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.average_output {
+    color: rgb(233, 216, 216);
+    padding: 5px;
+    border-right: 2px solid rgb(40, 7, 73);
+    flex: 1 5 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.form_boundary {
+    border: 2px solid rgb(40, 7, 73);
+    border-radius: 20px;
+    padding: 3px;
+    background-color: rgb(217, 192, 192);
+    background-image: linear-gradient(rgba(26, 35, 126, 0.3), rgba(106, 27, 154, 0.4));
+}
+.average_title {
+    border-radius: 20px;
+    padding: 5px;
+    background-image: linear-gradient(rgba(26, 35, 126, 1), rgba(106, 27, 154, 1));
+    border: 3px solid #673AB7;
+}
+.average_title > h2 {
+    font-size: 120%;
+    display: inline-block;
+}
+.values_output_average {
+    padding: 0px 0px 5px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.output_outline {
+    padding: 0px 10px 0px 10px;
+    width: 100%;
+}
+.output_blood_pressure {
+    border: 2px solid black;
+    border-radius: 20px;
+    height: 40px;
+    width: 100%;
+    display: table;
+}
+.output_upper_pressure {
+    background-color: rgba(229, 57, 53, 0.8);
+}
+.output_lower_pressure {
+    background-color: rgba(106, 27, 154, 0.8);
+}
+.output_blood_pressure > h4 {
+    font-size: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+.last_ten_values_render {
+    flex: 1 1 300px;
+    text-align: center;
+    color: rgb(233, 216, 216);
+}
+.last_ten_values_render > h2 {
+    padding: 10px 5px 5px 5px;
+    border-bottom: 2px solid rgb(40, 7, 73);
+    font-size: 150%;
+}
+table, th, td {
+    color: rgb(233, 216, 216);
+    text-align: center;
+}
+td, th {
+    padding: 3px 10px;
+}
+table {
+    border-collapse: collapse;
+    border-style: hidden;
+    width: 100%
+}
+th, td {
+    border: 2px solid  rgb(40, 7, 73);
+}

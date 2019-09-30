@@ -1,0 +1,17 @@
+extends ../../index.pug
+
+block body
+    nav(class=nav_class_input)
+      div.options-to-choose
+        //open form to input single value; call extend_new_measurings
+        a(href='/input_values') Unesi novo mjerenje
+        //open form to input multiple values and save an average of them in the database; call extend_multiple_new_measurings
+        a(href='/input_multiple_values') Unesi niz novih mjerenja
+        //call /select_file to import data from outer text file
+        a(href='/select_file') Unesi iz vanjske datoteke
+    nav(class=nav_class_show)
+      div.options-to-choose
+        //call period_of_interest web page layout to input period for which user wants to see input values
+        a(href='/time_period_average') Prosjek i prikaz mjerenja
+        //call last_inputs web page layout to show graphically inputs
+        a(href='/time_period_graphics') Graficki prikaz mjerenja

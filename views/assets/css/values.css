@@ -1,7 +1,7 @@
 /*blood measurement input form style*/
 .new-measurings {
   position: relative;
-  top: 26px;
+  top: 100px;
   display: flex;
   flex-direction: column;
   width: 22%;
@@ -22,6 +22,7 @@
   min-height: 60px;
   padding: 10px;
   position: relative;
+  width: 100%;
   }
 .device-screen {
   width: 15%;

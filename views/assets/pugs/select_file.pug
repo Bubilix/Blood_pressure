@@ -1,10 +1,15 @@
 extends ../../index.pug
 
 block body
+    //input field to select text file from which a user should upload data
     .input-field
+        /*input form*/
         form.select-file(action='/select_file' method='post' enctype='multipart/form-data')
+            //user information
             h2 Oznacite tekstualnu datoteku iz koje zelite unijeti mjerenja
+            //field to click to upload data
             label.label(for='fileupload', accept='text') Odaberite datoteku
                 input(type='file', name='fileupload', id='fileupload', required='')
                 input(type='submit' value='Potvrdi')
+        //button to get back
         include get_back.pug

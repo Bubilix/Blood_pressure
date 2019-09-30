@@ -5,7 +5,7 @@ const saveDBCollection = require('../middleware/saveDBCollection');
 
 router.get('/', (req, res, next) => {
     if (res) {
-        res.render('index', {
+        res.render('./assets/pugs/welcome_navigation.pug', {
             nav_class_input: 'nonactive-nav1',
             nav_class_show: 'nonactive-nav2'
         });

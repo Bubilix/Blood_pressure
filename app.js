@@ -14,6 +14,7 @@ const time_period_graphics = require('./api/routers/time_period_graphics');
 const average = require('./api/routers/average');
 const graphics = require('./api/routers/graphics');
 const auth = require('./api/middleware/auth');
+require('./api/routers/prod')(app);
 
 
 //show on screen .pug files from ./views folder

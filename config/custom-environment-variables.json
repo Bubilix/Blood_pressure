@@ -3,7 +3,7 @@
         "DBpassword": "DBpassword"
     },
     "Blood_pressure_app_port": {
-        "port": "PORT"
+        "port": "port"
     },
     "jwtPrivateKey": "BloodPressureApp_jwtPrivateKey"
 }

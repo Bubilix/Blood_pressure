@@ -1,0 +1,3 @@
+set DBpassword=Stolac360
+set PORT=3000
+set BloodPressureApp_jwtPrivateKey=Bubi
